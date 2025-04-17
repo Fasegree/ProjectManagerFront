@@ -1,5 +1,25 @@
 # Vue 3 + TypeScript + Vite
+# Trood Front 
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This repository contains a simple project management.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Setup Instructions
+1. Clone the Repository:
+
+```bash
+
+git clone git@github.com:Fasegree/ProjectManagerFront.git
+git clone git@github.com:Fasegree/ProjectManagerBackend.git
+
+2. Install Dependencies:
+
+```bash
+npm install
+
+3. Run the Application:
+
+```bash
+npm run dev
+
+```
+The server will start on http://localhost:5173.
