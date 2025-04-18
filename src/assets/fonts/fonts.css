@@ -1,7 +1,76 @@
 @font-face {
-    font-family: 'Aeroport';
-    src: url('@/assets/fonts/Aeroport-regular-trial.otf') format('opentype'); 
-    font-weight: 400; 
-    font-style: normal;
-  }
-  
+  font-family: 'Aeroport-black';
+  src: url('/src/assets/fonts/Aeroport-black.otf') format('opentype');
+  font-weight: 900; 
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Aeroport-black-italic';
+  src: url('/src/assets/fonts/Aeroport-black-italic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Aeroport-bold-italic-trial';
+  src: url('/src/assets/fonts/Aeroport-bold-italic-trial.otf') format('opentype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Aeroport-bold-trial';
+  src: url('/src/assets/fonts/Aeroport-bold-trial.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Aeroport-light-italic-trial';
+  src: url('/src/assets/fonts/Aeroport-light-italic-trial.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Aeroport-light-trial';
+  src: url('/src/assets/fonts/Aeroport-light-trial.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Aeroport-medium-italic-trial';
+  src: url('/src/assets/fonts/Aeroport-medium-italic-trial.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Aeroport-medium-trial';
+  src: url('/src/assets/fonts/Aeroport-medium-trial.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Aeroport-monospaced-trial';
+  src: url('/src/assets/fonts/Aeroport-monospaced-trial.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Aeroport-regular-italic-trial';
+  src: url('/src/assets/fonts/Aeroport-regular-italic-trial.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Aeroport-regular-trial';
+  src: url('/src/assets/fonts/Aeroport-regular-trial.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}

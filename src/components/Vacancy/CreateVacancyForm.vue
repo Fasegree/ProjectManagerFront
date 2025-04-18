@@ -163,8 +163,14 @@ const vacancyData = reactive<VacancyData>({
 });
 
 const createVacancy = async () => {
-  if(!projectId){
-    await fetchCreateVacancy({...vacancyData, project_id:projectId , id: Date.now() })
+  console.log(projectId.value);
+  console.log({...vacancyData});
+  
+  
+  if(projectId.value){
+    await fetchCreateVacancy({...vacancyData, project_id: Number(projectId.value) , id: Date.now() })
+    console.log(7653);
+    
     vacancyData.name = "";
     vacancyData.field = "";
     vacancyData.experience = "";

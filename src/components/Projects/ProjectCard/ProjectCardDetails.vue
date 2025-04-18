@@ -1,82 +1,70 @@
 <template>
-  <div class="bg-gray-100 min-h-screen px-8 py-8">
+  <div class="bg-gray-100 px-8 rounded-3xl mt-5">
     <div v-if="project">
-      <div class="flex justify-between items-center mb-8">
-        <h2 class="text-2xl font-semibold">{{ project.name }}</h2>
+      <div class="flex justify-between items-center mb-8 mt-14">
+        <h2 class="text-[32px] font-semibold">{{ project.name }}</h2>
         <button
           @click="() => delProject(project!.id)"
-          class="rounded-2xl bg-red-100 px-4 py-2 hover:bg-red-200"
+          class="text-xl font-medium rounded-3xl bg-gray-200 hover:bg-gray-300"
         >
           Delete project
         </button>
       </div>
 
-      <div class="bg-white p-8 rounded-md shadow-md w-full max-w-xl">
+      <div class="bg-white p-8 rounded-md shadow-md w-full">
         <form @submit.prevent="updProject">
-          <div class="flex gap-7 mb-4">
-            <div class="w-1/2">
-              <label for="name" class="block text-sm font-bold mb-2"
-                >Name</label
-              >
-              <input
-                v-model="project.name"
-                type="text"
-                id="name"
-                required
-                class="input"
-                placeholder="Project Name"
-              />
-            </div>
-
-            <div class="w-1/2">
-              <label for="field" class="block text-sm font-bold mb-2"
+          <div class="grid grid-cols-[1fr_1fr_1fr] gap-7 mb-4">
+            <div class="w-full">
+              <label for="field" class="block text-sm font-bold mb-2 text-left"
                 >Field</label
               >
-              <select id="field" class="input">
+              <select id="field" class="w-full py-2 rounded-md px-2">
                 <option disabled value="">Select a field</option>
                 <option value="design">Design</option>
                 <option value="development">Development</option>
                 <option value="marketing">Marketing</option>
               </select>
             </div>
-          </div>
-
-          <div class="flex gap-7 mb-4">
-            <div class="w-1/2">
-              <label for="experience" class="block text-sm font-bold mb-2"
+            <div class="w-full">
+              <label
+                for="experience"
+                class="block text-sm font-bold mb-2 text-left"
                 >Experience</label
               >
               <input
                 v-model="project.experience"
                 type="text"
                 id="experience"
-                class="input"
+                class="w-full py-2 rounded-md px-2 border"
                 placeholder="Required Experience"
               />
             </div>
-
-            <div class="w-1/2">
-              <label for="deadline" class="block text-sm font-bold mb-2"
+            <div class="w-full">
+              <label
+                for="deadline"
+                class="block text-sm font-bold mb-2 text-left"
                 >Deadline</label
               >
               <input
                 v-model="project.deadline"
                 type="date"
                 id="deadline"
-                class="input"
+                class="w-full py-2 rounded-md px-2 border"
               />
             </div>
           </div>
 
           <div class="mb-6">
-            <label for="description" class="block text-sm font-bold mb-2"
+            <label
+              for="description"
+              class="block text-sm font-bold mb-2 text-left"
               >Description</label
             >
             <textarea
               v-model="project.description"
               id="description"
               rows="4"
-              class="input"
+              class="w-full py-2 rounded-md px-2 border"
               placeholder="Project Description"
             ></textarea>
           </div>
@@ -88,8 +76,17 @@
             >
               Update project
             </button>
+            <RouterLink :to="`/projects/${project.id}/create-vacancy`">
+              <button
+                type="submit"
+                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-2xl focus:outline-none focus:shadow-outline"
+              >
+                Create vacancy
+              </button>
+            </RouterLink>
           </div>
         </form>
+        <HiredPeopleList></HiredPeopleList>
       </div>
     </div>
     <div v-else class="text-gray-500">Loading project...</div>
@@ -105,8 +102,12 @@ import {
   getProjectById,
   fetchUpdateProject,
 } from "../../../api/api";
-import { formatDateToDMY, formatDMYToDateInput } from "../../../utils/formatDate";
+import {
+  formatDateToDMY,
+  formatDMYToDateInput,
+} from "../../../utils/formatDate";
 import { useProjectsStore } from "../../../stores/projects";
+import HiredPeopleList from "../../Vacancy/HiredPeopleList.vue";
 
 const project = ref<IProject | null>(null);
 const router = useRouter();
@@ -124,15 +125,20 @@ onMounted(async () => {
 
 const updProject = async () => {
   if (project.value) {
-    const {deadline} = project.value
-    const updateToSendProject = {...project.value, deadline: formatDateToDMY(deadline)}
-    
-    fetchUpdateProject(updateToSendProject)
+    const { deadline } = project.value;
+    const updateToSendProject = {
+      ...project.value,
+      deadline: formatDateToDMY(deadline),
+    };
+
+    fetchUpdateProject(updateToSendProject);
   }
 };
 const delProject = async (id: number) => {
-  fetchDeleteProject(id)
+  fetchDeleteProject(id);
   router.push("/projects");
-  projectsStore.projects = projectsStore.projects.filter((project) => project.id!==id)
+  projectsStore.projects = projectsStore.projects.filter(
+    (project) => project.id !== id
+  );
 };
 </script>
