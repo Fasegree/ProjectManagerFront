@@ -1,24 +1,23 @@
 <template>
-  <div class="bg-gray-100 px-8 rounded-3xl mt-5">
     <div v-if="project">
-      <div class="flex justify-between items-center mb-8 mt-14">
+      <div class="flex justify-between items-center mb-8">
         <h2 class="text-[32px] font-semibold">{{ project.name }}</h2>
         <button
           @click="() => delProject(project!.id)"
-          class="text-xl font-medium rounded-3xl bg-gray-200 hover:bg-gray-300"
+          class="text-xl font-medium rounded-3xl bg-gray-200 hover:bg-gray-300 mt-0"
         >
           Delete project
         </button>
       </div>
 
-      <div class="bg-white p-8 rounded-md shadow-md w-full">
+      <div class="bg-white p-8 rounded-3xl shadow-md w-full">
         <form @submit.prevent="updProject">
           <div class="grid grid-cols-[1fr_1fr_1fr] gap-7 mb-4">
             <div class="w-full">
               <label for="field" class="block text-sm font-bold mb-2 text-left"
                 >Field</label
               >
-              <select id="field" class="w-full py-2 rounded-md px-2">
+              <select id="field" class="w-full py-2 rounded-md px-2 bg-white border border-gray-300 hover:border-gray-400 focus:outline-none focus:shadow-outline">
                 <option disabled value="">Select a field</option>
                 <option value="design">Design</option>
                 <option value="development">Development</option>
@@ -90,7 +89,6 @@
       </div>
     </div>
     <div v-else class="text-gray-500">Loading project...</div>
-  </div>
 </template>
 
 <script setup lang="ts">

@@ -1,23 +1,29 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import Projects from "../views/Projects/Projects.vue";
+import ProjectsPage from "../views/Projects/ProjectsPage.vue";
 import CreateProject from "../views/Projects/CreateProject.vue";
-import CreatedVacancy from "../views/Projects/CreatedVacancy.vue";
 import CreateVacancy from "../views/Projects/CreateVacancy.vue";
-import ReadyProject from "../views/Projects/ReadyProject.vue";
+import EditProjectPage from "../views/Projects/EditProjectPage.vue";
+import HomePage from "../views/Projects/HomePage.vue";
 
 const routes = [
 
   {
+    path: "/",
+    name: "Home",
+    component: HomePage,
+    meta: { requiresAuth: true },
+  },
+  {
     path: "/projects",
     name: "Projects",
-    component: Projects,
+    component: ProjectsPage,
     meta: { requiresAuth: true },
   },
   {
     path: "/projects/:id",
-    name: "ReadyProject",
-    component: ReadyProject,
+    name: "EditProjectPage",
+    component: EditProjectPage,
     meta: { requiresAuth: true },
   },
   {
@@ -32,12 +38,7 @@ const routes = [
     component: CreateVacancy,
     meta: { requiresAuth: true },
   },
-  {
-    path: "/projects/:projectId/created-vacancy",
-    name: "Created-vacancy",
-    component: CreatedVacancy,
-    meta: { requiresAuth: true },
-  },
+
 ];
 
 const router = createRouter({

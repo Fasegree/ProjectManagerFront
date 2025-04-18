@@ -1,106 +1,100 @@
 <template>
-  <div class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div>
-      <h2 class="text-left text-2xl font-semibold mb-6">Creating project</h2>
+  <div class="flex justify-between items-center mb-8">
+    <h2 class="text-[32px] font-semibold">Creating Project</h2>
+  </div>
+  <div class="bg-white p-8 rounded-3xl shadow-md w-full">
+    <form @submit.prevent="createProject" class="space-y-6">
+      <div class="flex gap-7">
+        <div class="w-1/2">
+          <label
+            for="name"
+            class="block text-sm font-bold text-gray-700 mb-2 text-left"
+            >Name</label
+          >
+          <input
+            type="text"
+            id="name"
+            v-model="projectData.name"
+            class="w-full border rounded py-2 px-3 text-gray-700 shadow focus:outline-none focus:shadow-outline"
+            placeholder="Project Name"
+            required
+          />
+        </div>
 
-      <div class="bg-white p-8 rounded-md shadow-md w-full max-w-md">
-        <!-- Form  -->
-        <form @submit.prevent="createProject">
-          <div class="flex gap-7 mb-4">
-            <div class="w-1/2">
-              <label
-                for="name"
-                class="block text-gray-700 text-sm font-bold mb-2 text-left"
-                >Name</label
-              >
-              <input
-                type="text"
-                id="name"
-                v-model="projectData.name"
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Project Name"
-                required
-              />
-            </div>
-            <div class="w-1/2">
-              <label
-                for="field"
-                class="block text-gray-700 text-sm font-bold mb-2 text-left"
-                >Field</label
-              >
-              <div class="relative">
-                <select
-                  id="field"
-                  v-model="projectData.field"
-                  class="block w-full bg-white border border-gray-300 hover:border-gray-400 py-2 px-3 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-                >
-                  <option value="" disabled selected>Select a field</option>
-                  <option value="design">Design</option>
-                  <option value="development">Development</option>
-                  <option value="marketing">Marketing</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div class="mb-4"></div>
-
-          <div class="mb-4 flex space-x-4">
-            <div class="w-1/2">
-              <label
-                for="experience"
-                class="block text-gray-700 text-sm font-bold mb-2 text-left"
-                >Experience</label
-              >
-              <input
-                type="text"
-                id="experience"
-                v-model="projectData.experience"
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Required Experience"
-              />
-            </div>
-            <div class="w-1/2">
-              <label
-                for="deadline"
-                class="block text-gray-700 text-sm font-bold mb-2 text-left"
-                >Deadline</label
-              >
-              <input
-                type="date"
-                id="deadline"
-                v-model="projectData.deadline"
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              />
-            </div>
-          </div>
-
-          <div class="mb-6">
-            <label
-              for="description"
-              class="block text-gray-700 text-sm font-bold mb-2 text-left"
-              >Description</label
-            >
-            <textarea
-              id="description"
-              v-model="projectData.description"
-              rows="4"
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="Project Description"
-            ></textarea>
-          </div>
-
-          <div class="flex justify-start">
-            <button
-              type="submit"
-              class="bg-gray-300 hover:bg-gray-400 text-gray-800 m-0w font-bold py-2 rounded-2xl focus:outline-none focus:shadow-outline"
-            >
-              Create project
-            </button>
-          </div>
-        </form>
+        <div class="w-1/2">
+          <label
+            for="field"
+            class="block text-left text-sm font-bold text-gray-700 mb-2"
+            >Field</label
+          >
+          <select
+            id="field"
+            v-model="projectData.field"
+            class="w-full border border-gray-300 rounded py-2 px-3 bg-white shadow focus:outline-none focus:shadow-outline"
+          >
+            <option value="" disabled selected>Select a field</option>
+            <option value="design">Design</option>
+            <option value="development">Development</option>
+            <option value="marketing">Marketing</option>
+          </select>
+        </div>
       </div>
-    </div>
+
+      <div class="flex gap-7">
+        <div class="w-1/2">
+          <label
+            for="experience"
+            class="block text-left text-sm font-bold text-gray-700 mb-2"
+            >Experience</label
+          >
+          <input
+            type="text"
+            id="experience"
+            v-model="projectData.experience"
+            class="w-full border rounded py-2 px-3 text-gray-700 shadow focus:outline-none focus:shadow-outline"
+            placeholder="Required Experience"
+          />
+        </div>
+
+        <div class="w-1/2">
+          <label
+            for="deadline"
+            class="block text-left text-sm font-bold text-gray-700 mb-2"
+            >Deadline</label
+          >
+          <input
+            type="date"
+            id="deadline"
+            v-model="projectData.deadline"
+            class="w-full border rounded py-2 px-3 text-gray-700 shadow focus:outline-none focus:shadow-outline"
+          />
+        </div>
+      </div>
+
+      <div>
+        <label
+          for="description"
+          class="block text-left text-sm font-bold text-gray-700 mb-2"
+          >Description</label
+        >
+        <textarea
+          id="description"
+          v-model="projectData.description"
+          rows="4"
+          class="w-full border rounded py-2 px-3 text-gray-700 shadow focus:outline-none focus:shadow-outline"
+          placeholder="Project Description"
+        ></textarea>
+      </div>
+
+      <div class="flex">
+        <button
+          type="submit"
+          class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-2xl focus:outline-none focus:shadow-outline"
+        >
+          Create project
+        </button>
+      </div>
+    </form>
   </div>
 </template>
 

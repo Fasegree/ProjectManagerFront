@@ -14,26 +14,26 @@
     <!-- навигация корзина и профиль -->
 
     <div class="flex gap-3 items-center">
-      <div class="cursor-pointer" @click="toogleCart">
+      <div class="cursor-pointer" >
         <BellIcon class="size-5" />
       </div>
-      <div class="cursor-pointer" @click="toogleProfile">
+      <div class="cursor-pointer" >
         <ChatBubbleLeftIcon class="size-5" />
       </div>
-      <div v-if="user" class="flex items-center gap-3">
+      <div v-if="currentUser" class="flex items-center gap-3">
         <img
           class="size-10 rounded-full bg-cyan-400"
-          :src="user?.photoURL || undefined"
+          :src="currentUser?.photoURL || ''"
           alt="avatar"
         />
-        <span class="cursor-default">{{ user?.displayName }}</span>
+        <span class="cursor-default">{{ currentUser?.displayName }}</span>
       </div>
       <div v-else>
         <button
-          class="text-lg font-semibold rounded-3xl bg-gray-200 hover:bg-gray-300"
+          class="text-lg font-semibold rounded-3xl bg-gray-200 hover:bg-gray-300 m-0"
           @click="loginWithGoogle"
         >
-          login
+          Log in
         </button>
       </div>
     </div>
@@ -41,32 +41,15 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
 import { BellIcon, ChatBubbleLeftIcon } from "@heroicons/vue/24/outline";
-import { auth, provider, signInWithPopup } from "../../../firebase";
-import { onAuthStateChanged } from "firebase/auth/cordova";
-import type { User } from "firebase/auth";
+import { auth,  provider, signInWithPopup } from "../../../firebase";
+import { useAuth } from "../../../composables/useAuth";
 
-const searchInputRef = ref<HTMLInputElement | null>(null);
-const isModalCartOpen = ref(false);
-const isModalProfileOpen = ref(false);
 
-const user = ref<User | null>(null);
-onMounted(() => {
-  onAuthStateChanged(auth, (firebaseUser) => {
-    user.value = firebaseUser;
-    // console.log('User:', user.value);
-  });
-});
-function toogleCart() {
-  isModalCartOpen.value = !isModalCartOpen.value;
-}
-function toogleProfile() {
-  isModalProfileOpen.value = !isModalProfileOpen.value;
-}
-function search() {
-  console.log("Search", searchInputRef.value?.value);
-}
+
+const {currentUser} = useAuth()
+
+
 const loginWithGoogle = async () => {
   await signInWithPopup(auth, provider);
 };

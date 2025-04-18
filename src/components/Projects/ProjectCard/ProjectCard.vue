@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full rounded-3xl border-4 pt-8 pl-8 pr-8 pb-4 text-left hover:shadow-xl hover:-translate-x-2 hover:-translate-y-2 transition-all duration-300 ease-in-out">
+  <div class="w-full bg-white rounded-3xl border-4 pt-8 pl-8 pr-8 pb-4 text-left hover:shadow-xl hover:-translate-x-1 hover:-translate-y-1 transition-all duration-300 ease-in-out">
     <div>
       <div class="text-2xl font-semibold">
         {{ project.name }}

@@ -10,6 +10,7 @@ export function formatDMYToDate(dateStr: string): Date {
   return new Date(year, month - 1, day);
 }
 
+// DD.MM.YYYY → YYYY-MM-YY
 export function formatDMYToDateInput(dmy: string): string {
   const [day, month, year] = dmy.split(".");
   return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;

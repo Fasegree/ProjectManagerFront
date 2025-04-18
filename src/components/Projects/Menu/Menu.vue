@@ -12,10 +12,11 @@
           :class="[
             'w-full mx-0 py-5 text-left  transition-colors duration-200 font-aeroport font-medium',
             isActive === index
-              ? 'bg-gray-300 text-white '
+              ? 'bg-[#C2C5CB] text-white '
               : 'hover:bg-gray-200 text-gray-700 bg-transparent',
           ]"
         >
+        
           {{ item.label }}
         </button>
       </RouterLink>
@@ -36,7 +37,6 @@ import { signOut } from "firebase/auth/cordova";
 const user = ref<User | null>(null);
 const isActive = ref<number | null>(0);
 
-const router = useRouter();
 const route = useRoute();
 
 onMounted(() => {
@@ -65,7 +65,6 @@ watch(
   { immediate: true }
 );
 
-// 3. Меню
 interface MenuItem {
   label: string;
   path: string;
@@ -86,6 +85,7 @@ const setActiveItem = (index: number) => {
 
 const logout = async () => {
   try {
+    window.location.reload();
     await signOut(auth);
     const router = useRouter();
     router.push("/");

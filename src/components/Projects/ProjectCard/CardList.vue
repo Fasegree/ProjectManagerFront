@@ -1,11 +1,11 @@
 <!-- ++++ -->
 <template>
   <div v-if="activeProjects.length" class="w-full">
-    <div class="flex justify-between items-center pl-8">
+    <div class="flex justify-between items-center">
       <span class="text-3xl">Active project</span>
       <RouterLink to="/create-project">
         <button
-          class="text-lg font-semibold rounded-3xl bg-gray-200 hover:bg-gray-300"
+          class="text-lg font-semibold rounded-3xl bg-gray-200 hover:bg-gray-300 mt-0"
         >
           Create project
         </button>
@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <div v-if="activeProjects.length" class="grid grid-cols-2 gap-3 mt-4 mb-4 ml-4">
+  <div v-if="activeProjects.length" class="grid grid-cols-2 gap-6 mt-7 mb-4 ">
     <div v-for="project in activeProjects" :key="project.id">
       <RouterLink
         :to="`/projects/${project.id}`"

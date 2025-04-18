@@ -1,9 +1,6 @@
 <template>
-  <div class="mt-14">
-    <div class="flex justify-between items-center pb-8">
-      <span class="text-3xl">Create vacancy</span>
-      
-    </div>
+  <div class="flex">
+      <span class="text-left text-3xl pb-8">Create vacancy</span>      
   </div>
 
   <form @submit.prevent="createVacancy" class="bg-white px-16 py-14 rounded-2xl text-xl">
