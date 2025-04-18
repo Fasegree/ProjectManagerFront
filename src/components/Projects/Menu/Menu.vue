@@ -85,10 +85,9 @@ const setActiveItem = (index: number) => {
 
 const logout = async () => {
   try {
-    window.location.reload();
     await signOut(auth);
     const router = useRouter();
-    router.push("/");
+    router.push("/login");
   } catch (error) {}
 };
 </script>
