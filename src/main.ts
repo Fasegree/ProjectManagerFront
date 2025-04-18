@@ -7,4 +7,4 @@ import './assets/fonts/fonts.css'
 
 const app = createApp(App);
 app.use(createPinia())
-createApp(App).use(router).mount('#app')
+app.use(router).mount('#app')
