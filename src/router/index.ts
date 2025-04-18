@@ -38,6 +38,12 @@ const routes = [
     component: CreateVacancy,
     meta: { requiresAuth: true },
   },
+  {
+    path: "/login",
+    name: "Login",
+    component: CreateVacancy,
+    meta: { requiresAuth: false },
+  },
 
 ];
 
@@ -54,7 +60,7 @@ router.beforeEach((to, _from, next) => {
     unsubscribe();
 
     if (requiresAuth && !user) {
-      next("/");
+      next("/login");
     } else {
       next();
     }
