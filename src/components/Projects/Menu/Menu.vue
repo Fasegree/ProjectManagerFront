@@ -82,10 +82,10 @@ const setActiveItem = (index: number) => {
   isActive.value = index;
 };
 
+const router = useRouter();
 const logout = async () => {
   try {
     await signOut(auth);
-    const router = useRouter();
     router.push("/login");
   } catch (error) {}
 };
