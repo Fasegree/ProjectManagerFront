@@ -143,8 +143,8 @@ const vacancyDataInitial = reactive<VacancyData>({
   country: "",
   description: "",
 });
-
-useAutoSave('draftVacancy', vacancyDataInitial)
+const DRAFT_VACANCY = "draftVacancy"
+useAutoSave(DRAFT_VACANCY, vacancyDataInitial)
 const createVacancy = async () => {
   
   
@@ -156,6 +156,8 @@ const createVacancy = async () => {
     vacancyDataInitial.experience = "";
     vacancyDataInitial.country = "";
     vacancyDataInitial.description = "";
+    localStorage.removeItem(DRAFT_VACANCY);
+
   }
 };
 </script>

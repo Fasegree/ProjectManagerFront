@@ -99,7 +99,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, onMounted, ref, watch } from "vue";
+import { reactive } from "vue";
 import { formatDateToDMY } from "../../../utils/formatDate";
 import { fetchCreateProject } from "../../../api/api";
 import type { IProject } from "../../../types/project";
@@ -116,8 +116,6 @@ interface IProjectData {
 }
 
 const LOCAL_KEY = 'draftProject';
-
-const isRestored = ref(false); // флаг восстановления
 
 const projectDataInitial = reactive<IProjectData>({
   id: -1,
@@ -146,11 +144,11 @@ const createProject = async () => {
 
   projectsStore.projects.push(project);
 
-  localStorage.removeItem(LOCAL_KEY);
   projectDataInitial.name = "";
   projectDataInitial.field = "";
   projectDataInitial.experience = "";
   projectDataInitial.deadline = "";
   projectDataInitial.description = "";
+  localStorage.removeItem(LOCAL_KEY);
 };
 </script>
