@@ -3,7 +3,9 @@
   <Header></Header>
   <main class="grid grid-cols-[1fr_3fr] gap-[34px]">
      <Menu></Menu>
-    <RouterView />
+     <div class="bg-gray-100 px-16 rounded-3xl mt-5">
+       <RouterView />
+     </div>
   </main>
 </template>
 
