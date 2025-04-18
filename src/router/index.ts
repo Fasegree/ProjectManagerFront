@@ -5,6 +5,7 @@ import CreateProject from "../views/Projects/CreateProject.vue";
 import CreateVacancy from "../views/Projects/CreateVacancy.vue";
 import EditProjectPage from "../views/Projects/EditProjectPage.vue";
 import HomePage from "../views/Projects/HomePage.vue";
+import LoginPage from "../views/Projects/LoginPage.vue";
 
 const routes = [
 
@@ -40,8 +41,8 @@ const routes = [
   },
   {
     path: "/login",
-    name: "Login",
-    component: CreateVacancy,
+    name: "LoginPage",
+    component: LoginPage,
     meta: { requiresAuth: false },
   },
 
@@ -52,19 +53,32 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, _from, next) => {
-  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
-
-  const auth = getAuth();
-  const unsubscribe = onAuthStateChanged(auth, (user: any) => {
-    unsubscribe();
-
-    if (requiresAuth && !user) {
-      next("/login");
-    } else {
-      next();
-    }
+function getCurrentUser(): Promise<any> {
+  return new Promise((resolve, reject) => {
+    const removeListener = onAuthStateChanged(
+      getAuth(),
+      (user) => {
+        removeListener();
+        resolve(user);
+      },
+      reject
+    );
   });
+}
+
+router.beforeEach(async (to, _, next) => {
+  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
+  const user = await getCurrentUser();
+
+  if (requiresAuth && !user) {
+    next("/login");
+  } else if (to.path === "/login" && user) {
+    // ⛔️ Пользователь авторизован — не пускаем на логин
+    next("/");
+  } else {
+    next();
+  }
 });
+
 
 export default router;

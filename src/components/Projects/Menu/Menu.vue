@@ -29,10 +29,9 @@
 
 <script setup lang="ts">
 import { onMounted, ref, watch } from "vue";
-import { auth, onAuthStateChanged } from "../../../firebase";
+import { auth, onAuthStateChanged, signOut } from "../../../firebase";
 import type { User } from "firebase/auth";
 import { useRouter, useRoute } from "vue-router";
-import { signOut } from "firebase/auth/cordova";
 
 const user = ref<User | null>(null);
 const isActive = ref<number | null>(0);
