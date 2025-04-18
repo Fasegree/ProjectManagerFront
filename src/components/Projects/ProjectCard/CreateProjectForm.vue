@@ -14,7 +14,7 @@
           <input
             type="text"
             id="name"
-            v-model="projectData.name"
+            v-model="projectDataInitial.name"
             class="w-full border rounded py-2 px-3 text-gray-700 shadow focus:outline-none focus:shadow-outline"
             placeholder="Project Name"
             required
@@ -29,7 +29,7 @@
           >
           <select
             id="field"
-            v-model="projectData.field"
+            v-model="projectDataInitial.field"
             class="w-full border border-gray-300 rounded py-2 px-3 bg-white shadow focus:outline-none focus:shadow-outline"
           >
             <option value="" disabled selected>Select a field</option>
@@ -50,7 +50,7 @@
           <input
             type="text"
             id="experience"
-            v-model="projectData.experience"
+            v-model="projectDataInitial.experience"
             class="w-full border rounded py-2 px-3 text-gray-700 shadow focus:outline-none focus:shadow-outline"
             placeholder="Required Experience"
           />
@@ -65,7 +65,7 @@
           <input
             type="date"
             id="deadline"
-            v-model="projectData.deadline"
+            v-model="projectDataInitial.deadline"
             class="w-full border rounded py-2 px-3 text-gray-700 shadow focus:outline-none focus:shadow-outline"
           />
         </div>
@@ -79,7 +79,7 @@
         >
         <textarea
           id="description"
-          v-model="projectData.description"
+          v-model="projectDataInitial.description"
           rows="4"
           class="w-full border rounded py-2 px-3 text-gray-700 shadow focus:outline-none focus:shadow-outline"
           placeholder="Project Description"
@@ -99,11 +99,12 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
+import { reactive, onMounted, ref, watch } from "vue";
 import { formatDateToDMY } from "../../../utils/formatDate";
 import { fetchCreateProject } from "../../../api/api";
 import type { IProject } from "../../../types/project";
 import { useProjectsStore } from "../../../stores/projects";
+import { useAutoSave } from "../../../composables/useAutoSave";
 
 interface IProjectData {
   id: number;
@@ -114,7 +115,11 @@ interface IProjectData {
   description?: string;
 }
 
-const projectData = reactive<IProjectData>({
+const LOCAL_KEY = 'draftProject';
+
+const isRestored = ref(false); // флаг восстановления
+
+const projectDataInitial = reactive<IProjectData>({
   id: -1,
   name: "",
   field: "",
@@ -124,25 +129,28 @@ const projectData = reactive<IProjectData>({
 });
 
 const projectsStore = useProjectsStore();
-
+useAutoSave('draftProject', projectDataInitial)
 const createProject = async () => {
-  const { name, deadline, description, experience } = projectData;
+  const { name, deadline, description, experience } = projectDataInitial;
 
   const projectToSend: IProject = {
     id: Date.now(),
     name,
     description: description || "",
     experience: experience || "",
-    deadline: formatDateToDMY(deadline), // YYYY-MM-DD → DD.MM.YYYY
+    deadline: formatDateToDMY(deadline),
   };
+
   const project = await fetchCreateProject(projectToSend);
   console.log({ ...project });
 
   projectsStore.projects.push(project);
-  projectData.name = "";
-  projectData.field = "";
-  projectData.experience = "";
-  projectData.deadline = "";
-  projectData.description = "";
+
+  localStorage.removeItem(LOCAL_KEY);
+  projectDataInitial.name = "";
+  projectDataInitial.field = "";
+  projectDataInitial.experience = "";
+  projectDataInitial.deadline = "";
+  projectDataInitial.description = "";
 };
 </script>

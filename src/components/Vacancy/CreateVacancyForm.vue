@@ -14,7 +14,7 @@
         <input
           type="text"
           id="name"
-          v-model="vacancyData.name"
+          v-model="vacancyDataInitial.name"
           class="shadow appearance-none border rounded w-full h-[61px] py-2 px-3 text-gray-700 leading-3 focus:outline-none focus:shadow-outline"
           placeholder="Name"
           required
@@ -29,7 +29,7 @@
         <div class="relative">
           <select
             id="field"
-            v-model="vacancyData.field"
+            v-model="vacancyDataInitial.field"
             class="block w-full bg-white border border-gray-300 hover:border-gray-400 h-[61px] py-2 px-3 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
           >
             <option value="" disabled selected>Select a field</option>
@@ -56,7 +56,7 @@
         <div class="relative">
           <select
             id="experience"
-            v-model="vacancyData.experience"
+            v-model="vacancyDataInitial.experience"
             class="block w-full bg-white border border-gray-300 hover:border-gray-400 h-[61px] py-2 px-3 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
           >
             <option value="" disabled selected>Select experience level</option>
@@ -83,7 +83,7 @@
         <input
           type="text"
           id="country"
-          v-model="vacancyData.country"
+          v-model="vacancyDataInitial.country"
           class="shadow appearance-none border rounded w-full h-[61px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           placeholder="Country"
         />
@@ -98,7 +98,7 @@
       >
       <textarea
         id="description"
-        v-model="vacancyData.description"
+        v-model="vacancyDataInitial.description"
         rows="4"
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         placeholder="Vacancy Description"
@@ -120,6 +120,7 @@
 import { reactive, ref } from "vue";
 import { fetchCreateVacancy } from "../../api/api";
 import { useRoute } from "vue-router";
+import { useAutoSave } from "../../composables/useAutoSave";
 
 const projectId = ref<string | null>(null)
 const route = useRoute()
@@ -135,7 +136,7 @@ interface VacancyData {
   description: string;
 }
 
-const vacancyData = reactive<VacancyData>({
+const vacancyDataInitial = reactive<VacancyData>({
   name: "",
   field: "",
   experience: "",
@@ -143,20 +144,18 @@ const vacancyData = reactive<VacancyData>({
   description: "",
 });
 
+useAutoSave('draftVacancy', vacancyDataInitial)
 const createVacancy = async () => {
-  console.log(projectId.value);
-  console.log({...vacancyData});
   
   
   if(projectId.value){
-    await fetchCreateVacancy({...vacancyData, project_id: Number(projectId.value) , id: Date.now() })
-    console.log(7653);
+    await fetchCreateVacancy({...vacancyDataInitial, project_id: Number(projectId.value) , id: Date.now() })
     
-    vacancyData.name = "";
-    vacancyData.field = "";
-    vacancyData.experience = "";
-    vacancyData.country = "";
-    vacancyData.description = "";
+    vacancyDataInitial.name = "";
+    vacancyDataInitial.field = "";
+    vacancyDataInitial.experience = "";
+    vacancyDataInitial.country = "";
+    vacancyDataInitial.description = "";
   }
 };
 </script>
