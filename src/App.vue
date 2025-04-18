@@ -1,6 +1,6 @@
 
 <template>
-  qwe
+  qwegit 
   <!-- <Header></Header>
   <main class="grid grid-cols-[1fr_3fr] gap-[34px]">
     <Menu></Menu>
