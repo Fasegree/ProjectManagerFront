@@ -71,7 +71,7 @@
           <div class="flex justify-start">
             <button
               type="submit"
-              class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-2xl focus:outline-none focus:shadow-outline"
+              class="bg-gray-300 mx-0 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-2xl focus:outline-none focus:shadow-outline"
             >
               Update project
             </button>

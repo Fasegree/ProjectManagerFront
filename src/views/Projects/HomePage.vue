@@ -8,7 +8,7 @@
     <p class="text-gray-600">Готов к новым проектам? 🛠️</p>
     <RouterLink to="/projects">
       <button
-        class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+        class="text-lg font-semibold rounded-3xl bg-gray-300 hover:bg-gray-400 mt-5"
       >
         Перейти к проектам
       </button>

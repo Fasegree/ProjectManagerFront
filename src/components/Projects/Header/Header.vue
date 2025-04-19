@@ -1,12 +1,12 @@
 <template>
   <div
-    class="flex justify-between gap-3 h-32 items-center bg-slate-100 rounded-md px-10"
+    class="flex justify-between gap-3 h-32 items-center bg-[#F3F4F6] rounded-3xl px-10"
   >
     <!-- логотип -->
     <div class="flex gap-3">
       <div class="cursor-pointer">
         <h2 class="font-aeroport font-semibold text-2xl uppercase">
-          TROOD COMUNITY
+          <RouterLink to="/"> TROOD COMUNITY </RouterLink>
         </h2>
       </div>
     </div>
@@ -14,11 +14,11 @@
     <!-- навигация корзина и профиль -->
 
     <div class="flex gap-3 items-center">
-      <div class="cursor-pointer" >
-        <BellIcon class="size-5" />
+      <div>
+        <BellIcon class="size-5 text-gray-300" />
       </div>
-      <div class="cursor-pointer" >
-        <ChatBubbleLeftIcon class="size-5" />
+      <div>
+        <ChatBubbleLeftIcon class="size-5 text-gray-300" />
       </div>
       <div v-if="currentUser" class="flex items-center gap-3">
         <img
@@ -26,7 +26,9 @@
           :src="currentUser?.photoURL || ''"
           alt="avatar"
         />
-        <span class="cursor-default">{{ currentUser?.displayName }}</span>
+        <span class="text-gray-500 cursor-default">{{
+          currentUser?.displayName
+        }}</span>
       </div>
       <div v-else>
         <button
@@ -41,14 +43,11 @@
 </template>
 
 <script setup lang="ts">
-import { BellIcon, ChatBubbleLeftIcon } from "@heroicons/vue/24/outline";
-import { auth,  provider, signInWithPopup } from "../../../firebase";
+import { auth, provider, signInWithPopup } from "../../../firebase";
 import { useAuth } from "../../../composables/useAuth";
+import { BellIcon, ChatBubbleLeftIcon } from "@heroicons/vue/16/solid";
 
-
-
-const {currentUser} = useAuth()
-
+const { currentUser } = useAuth();
 
 const loginWithGoogle = async () => {
   await signInWithPopup(auth, provider);

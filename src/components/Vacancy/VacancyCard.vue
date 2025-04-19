@@ -20,7 +20,7 @@ const handleDelete = async () => {
 
 <template>
   <div
-    class="flex justify-between mt-5 bg-white rounded-3xl border-4 pt-4 pl-8 pr-8 pb-4 text-left hover:shadow-xl hover:-translate-x-1 hover:-translate-y-1 transition-all duration-300 ease-in-out "
+    class="flex justify-between mt-5 bg-white rounded-3xl border-1 pt-4 pl-8 pr-8 pb-4 text-left hover:shadow-xl hover:-translate-x-1 hover:-translate-y-1 transition-all duration-300 ease-in-out "
   >
   <RouterLink class="w-full cursor-pointer" :to="`/projects/${vacancy.project_id}/vacancy/${vacancy.id}`">
 <div >
@@ -36,11 +36,11 @@ const handleDelete = async () => {
     <div class="flex flex-col justify-between items-end ">
       <RouterLink
         :to="`/projects/${vacancy.project_id}/edit-vacancy/${vacancy.id}`"
-        class="text-blue-500 hover:underline"
+        class="text-gray-500 hover:text-blue-500 hover:underline"
       >
         Edit
       </RouterLink>
-      <div @click.stop.prevent="handleDelete" class="text-red-500 hover:underline cursor-pointer">
+      <div @click.stop.prevent="handleDelete" class="text-gray-500 hover:text-red-500 hover:underline cursor-pointer">
         Delete
       </div>
     </div>
