@@ -1,7 +1,7 @@
 import type { IProject } from "../types/project";
 import type { IVacancy } from "../types/vacancy";
 
-const BASE_URL = "https://projectmanagerbackend-pxfz.onrender.com";
+const BASE_URL = "http://localhost:8080";
 
 export const getProjects = async (): Promise<IProject[]> => {
   const response = await fetch(`${BASE_URL}/projects`);
@@ -69,7 +69,7 @@ export const fetchDeleteProject = async (id: number) => {
   }
 };
 
-export const getVacancies = async (projectId:number): Promise<IVacancy[]> => {
+export const getVacanciesByProject = async (projectId:number): Promise<IVacancy[]> => {
   const response = await fetch(`${BASE_URL}/projects/${projectId}/vacancies`);
   if (!response.ok) {
     throw new Error("Failed to fetch vacancies");

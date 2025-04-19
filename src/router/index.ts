@@ -6,6 +6,9 @@ import CreateVacancy from "../views/Projects/CreateVacancy.vue";
 import EditProjectPage from "../views/Projects/EditProjectPage.vue";
 import HomePage from "../views/Projects/HomePage.vue";
 import LoginPage from "../views/Projects/LoginPage.vue";
+import Vacancies from "../views/Projects/Vacancies.vue";
+import VacancyCardDetail from "../components/Vacancy/VacancyCardDetail.vue";
+import EditVacancyForm from "../components/Vacancy/EditVacancyForm.vue";
 
 const routes = [
 
@@ -37,6 +40,24 @@ const routes = [
     path: "/projects/:projectId/create-vacancy",
     name: "CreateVacancy",
     component: CreateVacancy,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: "/vacancies",
+    name: "Vacancies",
+    component: Vacancies,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: "/projects/:projectId/vacancy/:vacancyId",
+    name: "VacancyCardDetail",
+    component: VacancyCardDetail,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: "/projects/:projectId/edit-vacancy/:vacancyId",
+    name: "EditVacancyForm",
+    component: EditVacancyForm,
     meta: { requiresAuth: true },
   },
   {
