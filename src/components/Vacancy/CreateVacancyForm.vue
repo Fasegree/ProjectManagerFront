@@ -106,12 +106,11 @@
     </div>
 
     <div class="flex items-center justify-start">
-      <button
+      <Button
         type="submit"
-        class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 m-0 rounded-2xl focus:outline-none focus:shadow-outline"
       >
         Create vacancy
-      </button>
+      </Button>
     </div>
   </form>
 </template>
@@ -121,6 +120,8 @@ import { reactive, ref } from "vue";
 import { fetchCreateVacancy } from "../../api/api";
 import { useRoute } from "vue-router";
 import { useAutoSave } from "../../composables/useAutoSave";
+import Button from "../ui/button/Button.vue";
+import { toast } from "../ui/toast";
 
 const projectId = ref<string | null>(null)
 const route = useRoute()
@@ -149,14 +150,22 @@ const createVacancy = async () => {
   
   
   if(projectId.value){
-    await fetchCreateVacancy({...vacancyDataInitial, project_id: Number(projectId.value) , id: Date.now() })
-    
-    vacancyDataInitial.name = "";
-    vacancyDataInitial.field = "";
-    vacancyDataInitial.experience = "";
-    vacancyDataInitial.country = "";
-    vacancyDataInitial.description = "";
-    localStorage.removeItem(DRAFT_VACANCY);
+    try {
+      await fetchCreateVacancy({...vacancyDataInitial, project_id: Number(projectId.value) , id: Date.now() })
+      toast({title:`Vacancy "${vacancyDataInitial.name}" successfully created`})
+      vacancyDataInitial.name = "";
+      vacancyDataInitial.field = "";
+      vacancyDataInitial.experience = "";
+      vacancyDataInitial.country = "";
+      vacancyDataInitial.description = "";
+      localStorage.removeItem(DRAFT_VACANCY);
+      
+    } catch (error) {
+      if(!navigator.onLine) {
+        toast({title:"Check your connection"})
+      }
+      toast({title:"Server is not available. Please try again later"})
+    }
 
   }
 };

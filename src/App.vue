@@ -16,6 +16,7 @@
       <p class="text-red-500">Пожалуйста, войдите в систему</p>
     </div>
   </main>
+  <Toaster/>
 </template>
 
 
@@ -24,6 +25,8 @@ import { onMounted, ref } from 'vue';
 import Header from './components/Projects/Header/Header.vue';
 import Menu from './components/Projects/Menu/Menu.vue';
 import { auth, onAuthStateChanged } from './firebase';
+import Toaster from './components/ui/toast/Toaster.vue';
+import { toast } from 'vue-sonner';
 
 const currentUser = ref()
 const isLoading = ref(true)
@@ -33,7 +36,7 @@ onMounted(() => {
     currentUser.value = user
     isLoading.value = false
     if (!user) {
-      console.log('❌ Пользователь не авторизован')
+      toast({title: "❌ Пользователь не авторизован"})
     }
   });
 })

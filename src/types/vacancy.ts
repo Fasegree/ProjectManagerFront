@@ -1,5 +1,3 @@
-// types/vacancy.ts
-
 export interface IVacancy {
     id: number;
     project_id: number;

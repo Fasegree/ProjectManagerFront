@@ -9,6 +9,7 @@ import LoginPage from "../views/Projects/LoginPage.vue";
 import Vacancies from "../views/Projects/Vacancies.vue";
 import VacancyCardDetail from "../components/Vacancy/VacancyCardDetail.vue";
 import EditVacancyForm from "../components/Vacancy/EditVacancyForm.vue";
+import NotFFound404Page from "@/views/Projects/NotFFound404Page.vue";
 
 const routes = [
 
@@ -66,6 +67,25 @@ const routes = [
     component: LoginPage,
     meta: { requiresAuth: false },
   },
+  {
+    path: "/people",
+    name: "People",
+    component: NotFFound404Page,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: "/tests",
+    name: "Tests",
+    component: NotFFound404Page,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: "/settings",
+    name: "Settings",
+    component: NotFFound404Page,
+    meta: { requiresAuth: true },
+  },
+
 
 ];
 
@@ -94,7 +114,6 @@ router.beforeEach(async (to, _, next) => {
   if (requiresAuth && !user) {
     next("/login");
   } else if (to.path === "/login" && user) {
-    // ⛔️ Пользователь авторизован — не пускаем на логин
     next("/");
   } else {
     next();

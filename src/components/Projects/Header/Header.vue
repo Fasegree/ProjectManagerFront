@@ -2,7 +2,6 @@
   <div
     class="flex justify-between gap-3 h-32 items-center bg-[#F3F4F6] rounded-3xl px-10"
   >
-    <!-- логотип -->
     <div class="flex gap-3">
       <div class="cursor-pointer">
         <h2 class="font-aeroport font-semibold text-2xl uppercase">
@@ -11,7 +10,6 @@
       </div>
     </div>
 
-    <!-- навигация корзина и профиль -->
 
     <div class="flex gap-3 items-center">
       <div>
@@ -31,7 +29,7 @@
         }}</span>
       </div>
       <div v-else>
-        <button
+        <Button
           class="text-lg font-semibold rounded-3xl bg-gray-200 hover:bg-gray-300 m-0"
           @click="loginWithGoogle"
         >
@@ -46,6 +44,7 @@
 import { auth, provider, signInWithPopup } from "../../../firebase";
 import { useAuth } from "../../../composables/useAuth";
 import { BellIcon, ChatBubbleLeftIcon } from "@heroicons/vue/16/solid";
+import Button from "@/components/ui/button/Button.vue";
 
 const { currentUser } = useAuth();
 
