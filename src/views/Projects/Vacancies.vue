@@ -1,15 +1,6 @@
 <template>
   <div v-if="projectsWithVacancies.length" class="w-full">
-    <!-- <div class="flex justify-between items-center">
-      <span class="text-3xl">Active projects</span>
-      <RouterLink to="/create-project">
-        <button
-          class="text-lg font-semibold rounded-3xl bg-gray-200 hover:bg-gray-300 mt-0"
-        >
-          Create project
-        </button>
-      </RouterLink>
-    </div> -->
+  
 
     <div
       v-for="project in projectsWithVacancies"
@@ -26,18 +17,10 @@
   />
 </TransitionGroup>
 
-      <!-- <ul class="pl-4">
-        <li
-          v-for="vacancy in project.vacancies"
-          :key="vacancy.id"
-          class="text-gray-700"
-        >
-          → {{ vacancy.name }} ({{ vacancy.experience }})
-        </li>
-      </ul> -->
+    
     </div>
   </div>
-  <div v-else>Нет вакансий</div>
+  <div v-else>No vacancies</div>
 </template>
 
 <script setup lang="ts">

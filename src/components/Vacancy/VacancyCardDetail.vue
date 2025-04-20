@@ -32,7 +32,7 @@
         </div>
       </div>
     </div>
-    <div v-else>Нет вакансии</div>
+    <div v-else>No vacancies</div>
   </template>
   
   <script setup lang="ts">

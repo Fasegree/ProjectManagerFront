@@ -1,16 +1,17 @@
 <template>
   <div v-if="user" class="flex flex-col justify-between min-h-[80vh]">
-    <div class="flex flex-col items-start w-full">
+    <div class="flex flex-col items-start w-full mt-5">
       <RouterLink
         v-for="(item, index) in menuItems"
         :key="index"
         :to="item.path"
         class="w-full"
       >
-        <button
+        <Button
           @click="setActiveItem(index)"
+          variant="menu"
           :class="[
-            'w-full mx-0 py-5 text-left  transition-colors duration-200 font-aeroport font-medium',
+            'py-8',
             isActive === index
               ? 'bg-[#C2C5CB] text-white '
               : 'hover:bg-gray-200 text-gray-700 bg-transparent',
@@ -18,7 +19,7 @@
         >
         
           {{ item.label }}
-        </button>
+    </Button>
       </RouterLink>
     </div>
     <div class="py-5 pl-5 self-start text-sm text-gray-400 cursor-pointer">
@@ -32,6 +33,7 @@ import { onMounted, ref, watch } from "vue";
 import { auth, onAuthStateChanged, signOut } from "../../../firebase";
 import type { User } from "firebase/auth";
 import { useRouter, useRoute } from "vue-router";
+import Button from "@/components/ui/button/Button.vue";
 
 const user = ref<User | null>(null);
 const isActive = ref<number | null>(0);

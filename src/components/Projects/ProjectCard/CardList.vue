@@ -1,19 +1,15 @@
-<!-- ++++ -->
 <template>
-  <div v-if="activeProjects.length" class="w-full">
+  <div class="w-full">
     <div class="flex justify-between items-center">
       <span class="text-3xl">Active project</span>
       <RouterLink to="/create-project">
-        <button
-          class="text-lg font-semibold rounded-3xl bg-gray-300 hover:bg-gray-400 mt-0"
-        >
-          Create project
-        </button>
+        <Button class=""> Create project </Button>
       </RouterLink>
     </div>
   </div>
+  <div v-if="!activeProjects.length && !passedProjects.length">No projects</div>
 
-  <div v-if="activeProjects.length" class="grid grid-cols-2 gap-6 mt-7 mb-4 ">
+  <div v-if="activeProjects.length" class="grid grid-cols-2 gap-6 mt-7 mb-4">
     <div v-for="project in activeProjects" :key="project.id">
       <RouterLink
         :to="`/projects/${project.id}`"
@@ -30,7 +26,10 @@
     </div>
   </div>
 
-  <div v-if="passedProjects.length" class="grid grid-cols-2 gap-3 mt-4 mb-4 ml-4">
+  <div
+    v-if="passedProjects.length"
+    class="grid grid-cols-2 gap-3 mt-4 mb-4 ml-4"
+  >
     <div v-for="project in passedProjects" :key="project.id">
       <RouterLink
         :to="`/projects/${project.id}`"
@@ -43,11 +42,12 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import { useProjectsStore } from '../../../stores/projects';
-import { getToday, formatDMYToDate } from '../../../utils/formatDate';
-import ProjectCard from './ProjectCard.vue';
-import type { IProject } from '../../../types/project';
+import { onMounted, ref } from "vue";
+import { useProjectsStore } from "../../../stores/projects";
+import { getToday, formatDMYToDate } from "../../../utils/formatDate";
+import ProjectCard from "./ProjectCard.vue";
+import type { IProject } from "../../../types/project";
+import Button from "@/components/ui/button/Button.vue";
 
 const passedProjects = ref<IProject[]>([]);
 const activeProjects = ref<IProject[]>([]);

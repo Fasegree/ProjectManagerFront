@@ -1,16 +1,16 @@
-// YYYY-MM-DD → DD.MM.YYYY
+// YYYY-MM-DD => DD.MM.YYYY
 export function formatDateToDMY(isoDate: string): string {
   const [year, month, day] = isoDate.split("-");
   return `${day}.${month}.${year}`;
 }
 
-// DD.MM.YYYY → Date
+// DD.MM.YYYY => Date
 export function formatDMYToDate(dateStr: string): Date {
   const [day, month, year] = dateStr.split(".").map(Number);
   return new Date(year, month - 1, day);
 }
 
-// DD.MM.YYYY → YYYY-MM-YY
+// DD.MM.YYYY => YYYY-MM-YY
 export function formatDMYToDateInput(dmy: string): string {
   const [day, month, year] = dmy.split(".");
   return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;

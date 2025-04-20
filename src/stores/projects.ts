@@ -1,18 +1,31 @@
-import { defineStore } from 'pinia';
-import { ref } from 'vue';
-import { getProjects } from '../api/api'; // Здесь ты используешь функцию для получения проектов
-import type { IProject } from '../types/project';
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
+import { getProjects } from '../api/api'
+import type { IProject } from '../types/project'
 
 export const useProjectsStore = defineStore('projects', () => {
-  const projects = ref<IProject[]>([]);
+  const projects = ref<IProject[]>([])
+  const isLoading = ref<boolean>(false)
 
-  // Функция для загрузки проектов
   const fetchProjects = async () => {
-    projects.value = await getProjects();
-  };
+    try {
+      isLoading.value = true
+      projects.value = await getProjects()
+    } catch (error) {
+      console.error("Failed to fetch projects:", error)
+    } finally {
+      isLoading.value = false
+    }
+  }
+
+  const getProjectById = (id: number) => {
+    return projects.value.find(project => project.id === id)
+  }
 
   return {
+    isLoading,
     projects,
-    fetchProjects
-  };
-});
+    fetchProjects,
+    getProjectById
+  }
+})

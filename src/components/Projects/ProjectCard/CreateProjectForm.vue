@@ -87,24 +87,23 @@
       </div>
 
       <div class="flex">
-        <button
-          type="submit"
-          class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-6 rounded-2xl focus:outline-none focus:shadow-outline"
-        >
-          Create project
-        </button>
+        <Button type="submit"> Create project </Button>
       </div>
     </form>
   </div>
+  <Toaster v-model="errorMesage" />
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 import { formatDateToDMY } from "../../../utils/formatDate";
 import { fetchCreateProject } from "../../../api/api";
 import type { IProject } from "../../../types/project";
 import { useProjectsStore } from "../../../stores/projects";
 import { useAutoSave } from "../../../composables/useAutoSave";
+import Toaster from "@/components/ui/toast/Toaster.vue";
+import { toast } from "@/components/ui/toast";
+import Button from "@/components/ui/button/Button.vue";
 
 interface IProjectData {
   id: number;
@@ -115,7 +114,8 @@ interface IProjectData {
   description?: string;
 }
 
-const LOCAL_KEY = 'draftProject';
+const errorMesage = ref<string>("");
+const LOCAL_KEY = "draftProject";
 
 const projectDataInitial = reactive<IProjectData>({
   id: -1,
@@ -127,10 +127,12 @@ const projectDataInitial = reactive<IProjectData>({
 });
 
 const projectsStore = useProjectsStore();
-useAutoSave('draftProject', projectDataInitial)
+useAutoSave("draftProject", projectDataInitial);
 const createProject = async () => {
+  if (!navigator.onLine) {
+    toast({ title: "Check your conection" });
+  }
   const { name, deadline, description, experience } = projectDataInitial;
-
   const projectToSend: IProject = {
     id: Date.now(),
     name,
@@ -138,17 +140,28 @@ const createProject = async () => {
     experience: experience || "",
     deadline: formatDateToDMY(deadline),
   };
+  try {
+    const project = await fetchCreateProject(projectToSend);
 
-  const project = await fetchCreateProject(projectToSend);
-  console.log({ ...project });
+    projectsStore.projects.push(project);
 
-  projectsStore.projects.push(project);
-
-  projectDataInitial.name = "";
-  projectDataInitial.field = "";
-  projectDataInitial.experience = "";
-  projectDataInitial.deadline = "";
-  projectDataInitial.description = "";
-  localStorage.removeItem(LOCAL_KEY);
+    toast({
+      title: `Project "${projectDataInitial.name}" created!"`,
+      description: `Date: ${new Date().toLocaleDateString(
+        "ru-RU"
+      )} Time: ${new Date().toLocaleTimeString("ru-RU", {
+        hour: "2-digit",
+        minute: "2-digit",
+      })}`,
+    });
+    projectDataInitial.name = "";
+    projectDataInitial.field = "";
+    projectDataInitial.experience = "";
+    projectDataInitial.deadline = "";
+    projectDataInitial.description = "";
+    localStorage.removeItem(LOCAL_KEY);
+  } catch (error) {
+    toast({ title: "Invalid server. Try again later." });
+  }
 };
 </script>
