@@ -1,7 +1,11 @@
 <template>
   <div v-if="projectsStore.isLoading">...Loading</div>
   <div v-if="project" class="w-full">
-    <TitleWithButton :title="project.name" title-btn="Close vacancy" :action-click="handleDelete"/>
+    <TitleWithButton
+      :title="project.name"
+      title-btn="Close vacancy"
+      :action-click="handleDelete"
+    />
   </div>
   <EditVacancyForm
     v-if="vacancy"

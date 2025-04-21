@@ -1,6 +1,4 @@
 <template>
-  <!-- <div v-if="projectsStore.projects.length">... No project</div> -->
-
   <form
     v-if="props.vacancy.id"
     @submit.prevent="updateVacancyData"
