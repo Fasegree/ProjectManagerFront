@@ -138,7 +138,7 @@ const createProject = async () => {
   };
   try {
     const project = await fetchCreateProject(projectToSend);
-    
+
     projectsStore.projects.push(project);
 
     toast({

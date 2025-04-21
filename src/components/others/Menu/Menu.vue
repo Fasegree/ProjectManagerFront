@@ -1,5 +1,5 @@
 <template>
-  <div v-if="user" class="flex flex-col justify-between min-h-[80vh]">
+  <aside v-if="user" class="flex flex-col justify-between min-h-[80vh]">
     <div class="flex flex-col items-start w-full mt-5">
       <RouterLink
         v-for="(item, index) in menuItems"
@@ -17,15 +17,14 @@
               : 'hover:bg-gray-200 text-gray-700 bg-transparent',
           ]"
         >
-        
           {{ item.label }}
-    </Button>
+        </Button>
       </RouterLink>
     </div>
     <div class="py-5 pl-5 self-start text-sm text-gray-400 cursor-pointer">
       <span @click="logout">log out</span>
     </div>
-  </div>
+  </aside>
 </template>
 
 <script setup lang="ts">

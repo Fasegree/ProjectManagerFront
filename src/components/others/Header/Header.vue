@@ -4,7 +4,7 @@
   >
     <div class="flex gap-3">
       <div class="cursor-pointer">
-        <h2 class="font-aeroport font-semibold text-2xl uppercase">
+        <h2 class="font-aeroport-black text-2xl uppercase">
           <RouterLink to="/"> TROOD COMUNITY </RouterLink>
         </h2>
       </div>

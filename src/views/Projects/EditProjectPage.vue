@@ -1,9 +1,7 @@
 <template>
   <div v-if="project">
-    <div class="flex justify-between items-center mb-8">
-      <h2 class="text-[32px] font-semibold">{{ project.name }}</h2>
-      <Button @click="handleDeleteProject"> Delete project </Button>
-    </div>
+    
+    <TitleWithButton :title="project.name" title-btn="Delete project" :action-click="handleDeleteProject"/>
     <div class="bg-white p-8 rounded-3xl shadow-md w-full">
       <ProjectCardDetails :project="project" />
     </div>
@@ -15,13 +13,13 @@
 import { ref, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
-import Button from "@/components/ui/button/Button.vue";
 import type { IProject } from "@/types/project";
 import { useProjectsStore } from "@/stores/projects";
 import { fetchDeleteProject, getProjectById } from "@/api/api";
 import { formatDMYToDateInput } from "@/utils/formatDate";
 import ProjectCardDetails from "../../components/Projects/ProjectCard/ProjectCardDetails.vue";
 import HiredPeopleList from "@/components/Vacancy/HiredPeopleList.vue";
+import TitleWithButton from "@/components/others/TitleWithButton.vue";
 
 const project = ref<IProject | null>(null);
 const router = useRouter();

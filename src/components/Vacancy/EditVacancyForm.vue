@@ -1,11 +1,10 @@
 <template>
-  <div v-if="projectsStore.isLoading">...Loading</div>
   <!-- <div v-if="projectsStore.projects.length">... No project</div> -->
-  <h2 class="text-2xl font-semibold mb-6 text-left">{{ project?.name }}</h2>
+
   <form
-    v-if="project"
+    v-if="props.vacancy.id"
     @submit.prevent="updateVacancyData"
-    class="bg-white px-16 py-14 rounded-2xl text-xl"
+    class="bg-white px-16 py-14 rounded-2xl text-xl mt-8"
   >
     <div class="flex gap-5">
       <div class="w-1/3">
@@ -54,7 +53,7 @@
         <input
           type="date"
           id="deadline"
-          v-model="project.deadline"
+          v-model="props.projectDeadline"
           class="shadow appearance-none border rounded w-full h-[61px] py-2 px-3 text-gray-700 leading-3 focus:outline-none focus:shadow-outline"
           required
         />
@@ -98,73 +97,29 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
-import { useRoute, useRouter } from "vue-router";
-import { fetchUpdateVacancy, getProjectById, getVacanciesByProject } from "../../api/api";
+import { useRouter } from "vue-router";
+import { fetchUpdateVacancy } from "../../api/api";
 import type { IVacancy } from "../../types/vacancy";
-import { useProjectsStore } from "../../stores/projects";
 import Button from "../ui/button/Button.vue";
-import { type IProject } from "@/types/project";
-import { formatDMYToDateInput } from "@/utils/formatDate";
 import { toast } from "../ui/toast";
 
-const route = useRoute();
+const props = defineProps<{ vacancy: IVacancy; projectDeadline?: string }>();
+
 const router = useRouter();
-const vacancyId = Number(route.params.vacancyId);
-const projectId = Number(route.params.projectId);
-
-const projectsStore = useProjectsStore();
-const project = ref<IProject>();
-
-const vacancy = ref<IVacancy>({
-  id: vacancyId,
-  name: "",
-  field: "",
-  experience: "",
-  description: "",
-  country: "",
-  project_id: projectId,
-});
-
-onMounted(async () => {
-  if (projectsStore.projects.length) {
-    project.value = projectsStore.projects.find(
-      (project) => project.id === projectId
-    );
-  } else {
-    project.value = await getProjectById(projectId);
-  }
-  project.value = {
-    ...project.value,
-    deadline: project.value?.deadline
-      ? formatDMYToDateInput(project.value.deadline)
-      : "",
-  } as IProject;
-  console.log(project.value.deadline);
-
-  const vacancies = await getVacanciesByProject(projectId);
-  const current = vacancies.find((v) => v.id === vacancyId);
-  if (current) {
-    vacancy.value = current;
-  } else {
-    alert("Vacancy not found");
-    router.push(`/projects/${projectId}`);
-  }
-});
 
 const updateVacancyData = async () => {
   try {
-    await fetchUpdateVacancy(vacancy.value);
-    toast({title: "Vacancy updated successfully"})
+    await fetchUpdateVacancy(props.vacancy);
+    toast({ title: "Vacancy updated successfully" });
   } catch (error) {
-    if(!navigator.onLine) {
-        toast({title:"Check your connection"})
-      }
-      toast({title:"Server is not available. Please try again later"})    
+    if (!navigator.onLine) {
+      toast({ title: "Check your connection" });
+    }
+    toast({ title: "Server is not available. Please try again later" });
   }
 };
 
 const cancelEdit = () => {
-  router.push(`/projects/${projectId}`);
+  router.push(`/projects/${props.vacancy.project_id}`);
 };
 </script>

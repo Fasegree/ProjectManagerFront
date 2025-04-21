@@ -1,8 +1,8 @@
 import type { IProject } from "../types/project";
 import type { IVacancy } from "../types/vacancy";
 
-// const BASE_URL = "http://localhost:8080";
-const BASE_URL = "https://projectmanagerbackend-pxfz.onrender.com";
+const BASE_URL = "http://localhost:8080";
+// const BASE_URL = "https://projectmanagerbackend-pxfz.onrender.com";
 
 export const getProjects = async (): Promise<IProject[]> => {
   const response = await fetch(`${BASE_URL}/projects`);

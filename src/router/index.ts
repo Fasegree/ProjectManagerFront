@@ -2,14 +2,15 @@ import { createRouter, createWebHistory } from "vue-router";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import ProjectsPage from "../views/Projects/ProjectsPage.vue";
 import EditProjectPage from "../views/Projects/EditProjectPage.vue";
-import HomePage from "../views/Projects/HomePage.vue";
-import LoginPage from "../views/Projects/LoginPage.vue";
-import VacancyCardDetail from "../components/Vacancy/VacancyCardDetail.vue";
-import EditVacancyForm from "../components/Vacancy/EditVacancyForm.vue";
-import NotFFound404Page from "@/views/Projects/NotFFound404Page.vue";
-import CreateVacancyPage from "@/views/Projects/CreateVacancyPage.vue";
-import VacanciesPage from "@/views/Projects/VacanciesPage.vue";
+import HomePage from "@/views/Other/HomePage.vue";
 import CreateProjectPage from "@/views/Projects/CreateProjectPage.vue";
+import CreateVacancyPage from "@/views/Vacancies/CreateVacancyPage.vue";
+import VacanciesPage from "@/views/Vacancies/VacanciesPage.vue";
+import VacancyCardDetail from "@/components/Vacancy/VacancyCardDetail.vue";
+import EditVacancyPage from "@/views/Vacancies/EditVacancyPage.vue";
+import LoginPage from "@/views/Other/LoginPage.vue";
+import NotFFound404Page from "@/views/Other/NotFFound404Page.vue";
+
 
 const routes = [
   {
@@ -20,7 +21,7 @@ const routes = [
   },
   {
     path: "/projects",
-    name: "Projects",
+    name: "ProjectsPage",
     component: ProjectsPage,
     meta: { requiresAuth: true },
   },
@@ -32,13 +33,13 @@ const routes = [
   },
   {
     path: "/create-project",
-    name: "CreateProjects",
+    name: "CreateProjectsPage",
     component: CreateProjectPage,
     meta: { requiresAuth: true },
   },
   {
     path: "/projects/:projectId/create-vacancy",
-    name: "CreateVacancy",
+    name: "CreateVacancyPage",
     component: CreateVacancyPage,
     meta: { requiresAuth: true },
   },
@@ -56,8 +57,8 @@ const routes = [
   },
   {
     path: "/projects/:projectId/edit-vacancy/:vacancyId",
-    name: "EditVacancyForm",
-    component: EditVacancyForm,
+    name: "EditVacancyPage",
+    component: EditVacancyPage,
     meta: { requiresAuth: true },
   },
   {
