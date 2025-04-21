@@ -32,3 +32,6 @@ https://project-manager-front-eta.vercel.app/login
 
 backend
 https://projectmanagerbackend-pxfz.onrender.com
+
+fix Баг
+При изменении даты Passed проекта, он не переходит в категорию Активный. Проверять с текущей датой и емит родителю на фетч проектов. или в компоненте вызывать глобальный фетч на useProjectsStore

@@ -70,12 +70,15 @@ import { fetchUpdateProject } from "@/api/api";
 import Button from "@/components/ui/button/Button.vue";
 import { toast } from "@/components/ui/toast";
 import Toaster from "@/components/ui/toast/Toaster.vue";
+import { useProjectsStore } from "@/stores/projects";
 import type { IProject } from "@/types/project";
 import { formatDateToDMY } from "@/utils/formatDate";
 
+const projectsStore = useProjectsStore
 const props = defineProps<{ project: IProject }>();
 console.log(props.project);
 
+const projectDeadline = props.project.deadline
 
 const updProject = async () => {
   if (props.project) {
@@ -87,6 +90,9 @@ const updProject = async () => {
     
     try {
       await fetchUpdateProject(updateToSendProject);
+      const equilDate = new Date(deadline).getTime() === new Date(projectDeadline).getTime()
+      if(!equilDate )
+      projectsStore().fetchProjects()
       toast({ title: "Project successfully updated" });
     } catch (error) {
       toast({ title: `Server is not available. Please try again later` });
