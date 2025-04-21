@@ -3,7 +3,7 @@
   <main class="grid grid-cols-[1fr_3fr] gap-[34px]">
     <Menu/>
     <div v-if="isLoading">
-      <p class="text-gray-400">Загрузка...</p>
+      <p class="text-gray-400">Loading...</p>
     </div>
 
     <div
@@ -14,7 +14,7 @@
     </div>
 
     <div v-else>
-      <p class="text-red-500">Пожалуйста, войдите в систему</p>
+      <p class="text-red-500 m-5 text-left text-xl w-full">Please log in</p>
     </div>
   </main>
   <Toaster />

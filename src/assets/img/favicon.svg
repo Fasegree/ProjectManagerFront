@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <style>
+    .person {
+      opacity: 0;
+      animation: show-person 3s infinite;
+    }
+
+    .folder {
+      opacity: 0;
+      animation: show-folder 3s infinite;
+      animation-delay: 1s; /* Папка появляется после человечка */
+      z-index: 2; /* Папка будет сверху */
+    }
+
+    .box {
+      z-index: 1; /* Проект (документ) будет снизу */
+    }
+
+    @keyframes show-person {
+      0% { opacity: 1; }
+      33% { opacity: 1; }
+      66% { opacity: 1; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes show-folder {
+      33% { opacity: 0; }
+      66% { opacity: 1; }
+      100% { opacity: 1; }
+    }
+
+    /* Человечек будет снизу (z-index 1), папка сверху (z-index 2) */
+    .person {
+      z-index: 1;
+    }
+    .folder {
+      z-index: 2;
+    }
+  </style>
+
+  <!-- Проект (иконка документа 🧾) -->
+  <rect class="box" x="16" y="12" width="32" height="40" rx="2" fill="#000" />
+  <path class="box" d="M24 12h16v8H24z" fill="#fff" /> <!-- Верхняя часть документа -->
+  <path class="box" d="M24 24h16v2H24z" fill="#fff" /> <!-- Линия на документе -->
+  <path class="box" d="M24 28h16v2H24z" fill="#fff" /> <!-- Линия на документе -->
+
+  <!-- Человечек (жёлтый) -->
+  <g class="person" fill="#FFD700">
+    <!-- Голова -->
+    <circle cx="32" cy="36" r="5" fill="#FFD700"/>
+    <!-- Тело -->
+    <path d="M24 48c0-4 5-6 8-6s8 2 8 6v2H24v-2z" fill="#FFD700"/>
+  </g>
+
+  <!-- Папка (чёрная) -->
+  <path class="folder" d="M12 28h40v24a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4V28z" fill="#333" />
+  <path class="folder" d="M12 28l6-10h16l4 5h14v5z" fill="#444"/>
+</svg>
