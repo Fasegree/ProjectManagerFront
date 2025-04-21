@@ -8,6 +8,7 @@ export function useAutoSave<T extends object>(key: string, target: T) {
     if (saved) {
       try {
         const parsed = JSON.parse(saved)
+        /// Merge parsed data into the target object (mutates target)
         Object.assign(target, parsed)
         isRestored.value = true
       } catch (e) {
