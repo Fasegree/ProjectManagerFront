@@ -11,7 +11,6 @@ import EditVacancyPage from "@/views/Vacancies/EditVacancyPage.vue";
 import LoginPage from "@/views/Other/LoginPage.vue";
 import NotFFound404Page from "@/views/Other/NotFFound404Page.vue";
 
-
 const routes = [
   {
     path: "/",
@@ -84,6 +83,11 @@ const routes = [
     name: "Settings",
     component: NotFFound404Page,
     meta: { requiresAuth: true },
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "NotFound",
+    component: () => NotFFound404Page,
   },
 ];
 

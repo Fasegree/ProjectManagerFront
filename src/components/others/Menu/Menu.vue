@@ -29,10 +29,11 @@
 
 <script setup lang="ts">
 import { onMounted, ref, watch } from "vue";
-import { auth, onAuthStateChanged, signOut } from "../../../firebase";
+import { auth, onAuthStateChanged } from "../../../firebase";
 import type { User } from "firebase/auth";
-import { useRouter, useRoute } from "vue-router";
+import { useRoute } from "vue-router";
 import Button from "@/components/ui/button/Button.vue";
+import { logout } from "@/composables/logout";
 
 const user = ref<User | null>(null);
 const isActive = ref<number | null>(0);
@@ -81,13 +82,5 @@ const menuItems = ref<MenuItem[]>([
 
 const setActiveItem = (index: number) => {
   isActive.value = index;
-};
-
-const router = useRouter();
-const logout = async () => {
-  try {
-    await signOut(auth);
-    router.push("/login");
-  } catch (error) {}
 };
 </script>
