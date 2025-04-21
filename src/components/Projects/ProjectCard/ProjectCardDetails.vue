@@ -72,7 +72,7 @@ import { toast } from "@/components/ui/toast";
 import Toaster from "@/components/ui/toast/Toaster.vue";
 import { useProjectsStore } from "@/stores/projects";
 import type { IProject } from "@/types/project";
-import { formatDateToDMY, formatDMYToDateInput } from "@/utils/formatDate";
+import { formatDateToDMY } from "@/utils/formatDate";
 
 const projectsStore = useProjectsStore
 const props = defineProps<{ project: IProject }>();
