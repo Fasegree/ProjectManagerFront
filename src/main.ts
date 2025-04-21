@@ -1,8 +1,8 @@
 import { createApp } from "vue";
 import App from "./App.vue";
+import { createPinia } from "pinia";
 import router from "./router";
 import "./assets/styles/main.css";
-import { createPinia } from "pinia";
 import "./assets/fonts/fonts.css";
 
 const app = createApp(App);

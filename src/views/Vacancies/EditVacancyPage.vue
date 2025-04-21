@@ -16,6 +16,8 @@
 </template>
 
 <script setup lang="ts">
+  import { onMounted, ref } from "vue";
+  import { useRoute, useRouter } from "vue-router";
 import {
   fetchDeleteVacancy,
   getProjectById,
@@ -23,13 +25,11 @@ import {
 } from "@/api/api";
 import TitleWithButton from "@/components/others/TitleWithButton.vue";
 import { toast } from "@/components/ui/toast";
-import EditVacancyForm from "@/components/Vacancy/EditVacancyForm.vue";
 import { useProjectsStore } from "@/stores/projects";
 import type { IProject } from "@/types/project";
 import type { IVacancy } from "@/types/vacancy";
 import { formatDMYToDateInput } from "@/utils/formatDate";
-import { onMounted, ref } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import EditVacancyForm from "@/components/Projects/Vacancy/EditVacancyForm.vue";
 
 const projectsStore = useProjectsStore();
 const project = ref<IProject>();

@@ -34,8 +34,8 @@
 </template>
 
 <script setup lang="ts">
-import { fetchDeleteVacancy } from "../../api/api";
-import type { IVacancy } from "../../types/vacancy";
+import { fetchDeleteVacancy } from "@/api/api";
+import type { IVacancy } from "@/types/vacancy";
 import { defineEmits } from "vue";
 
 const props = defineProps<{ vacancy: IVacancy }>();

@@ -35,7 +35,6 @@
 </template>
 
 <script setup lang="ts">
-import {} from "@heroicons/vue/24/outline";
 import type { IProject } from "../../../types/project";
 import {
   BellIcon,

@@ -40,12 +40,11 @@
 </template>
 
 <script setup lang="ts">
-import {} from "@heroicons/vue/24/outline";
-import type { IVacancy } from "../../types/vacancy";
-import { getVacanciesByProject } from "../../api/api";
 import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import { BellIcon, ChatBubbleLeftIcon } from "@heroicons/vue/16/solid";
+import type { IVacancy } from "@/types/vacancy";
+import { getVacanciesByProject } from "@/api/api";
 
 const vacancy = ref<IVacancy>();
 const route = useRoute();

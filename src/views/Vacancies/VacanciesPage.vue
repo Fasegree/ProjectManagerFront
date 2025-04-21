@@ -26,7 +26,7 @@
 import { ref, onMounted } from "vue";
 import type { IProject, IProjectWithVacancy } from "../../types/project";
 import { getProjects, getVacanciesByProject } from "../../api/api";
-import VacancyCard from "../../components/Vacancy/VacancyCard.vue";
+import VacancyCard from "@/components/Projects/Vacancy/VacancyCard.vue";
 
 // const projectsWithVacancies = ref<(IProject & { vacancies: IVacancy[] })[]>([]);
 const projectsWithVacancies = ref<IProjectWithVacancy[]>([]);

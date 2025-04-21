@@ -1,9 +1,12 @@
 <template>
   <div v-if="project">
-    
-    <TitleWithButton :title="project.name" title-btn="Delete project" :action-click="handleDeleteProject"/>
+    <TitleWithButton
+      :title="project.name"
+      title-btn="Delete project"
+      :action-click="handleDeleteProject"
+    />
     <div class="bg-white p-8 rounded-3xl shadow-md w-full">
-      <ProjectCardDetails :project="project" />
+      <EditProjectForm :project="project" />
     </div>
     <HiredPeopleList />
   </div>
@@ -17,9 +20,9 @@ import type { IProject } from "@/types/project";
 import { useProjectsStore } from "@/stores/projects";
 import { fetchDeleteProject, getProjectById } from "@/api/api";
 import { formatDMYToDateInput } from "@/utils/formatDate";
-import ProjectCardDetails from "../../components/Projects/ProjectCard/ProjectCardDetails.vue";
-import HiredPeopleList from "@/components/Vacancy/HiredPeopleList.vue";
 import TitleWithButton from "@/components/others/TitleWithButton.vue";
+import EditProjectForm from "@/components/Projects/ProjectCard/EditProjectForm.vue";
+import HiredPeopleList from "@/components/Projects/Vacancy/HiredPeopleList.vue";
 
 const project = ref<IProject | null>(null);
 const router = useRouter();
