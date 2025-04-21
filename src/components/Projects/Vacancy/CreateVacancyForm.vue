@@ -1,20 +1,20 @@
 <template>
   <form
     @submit.prevent="createVacancy"
-    class="bg-white px-16 py-14 rounded-2xl text-xl"
+    class="bg-white px-16 py-14 rounded-2xl "
   >
-    <div class="flex gap-5">
+    <div class="flex gap-7">
       <div class="w-1/2">
         <label
           for="name"
-          class="block text-gray-700 text-sm font-bold mb-2 text-left"
+          class="block text-sm font-bold text-gray-700 mb-2 text-left"
           >Name</label
         >
         <input
           type="text"
           id="name"
           v-model="vacancyDataInitial.name"
-          class="shadow appearance-none border rounded w-full h-[61px] py-2 px-3 text-gray-700 leading-3 focus:outline-none focus:shadow-outline"
+          class="w-full border rounded py-2 px-3 text-gray-700  focus:outline-none focus:-outline"
           placeholder="Name"
           required
         />
@@ -22,14 +22,14 @@
       <div class="w-1/2">
         <label
           for="field"
-          class="block text-gray-700 text-sm font-bold mb-2 text-left"
+          class="block text-left text-sm font-bold text-gray-700 mb-2"
           >Field</label
         >
         <div class="relative">
           <select
             id="field"
             v-model="vacancyDataInitial.field"
-            class="block w-full bg-white border border-gray-300 hover:border-gray-400 h-[61px] py-2 px-3 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+            class="w-full border border-gray-300 rounded py-2 px-3 bg-white  focus:outline-none focus:-outline"
             required
           >
             <option value="" disabled selected>Select a field</option>
@@ -46,14 +46,14 @@
       <div class="w-1/2">
         <label
           for="experience"
-          class="block text-gray-700 text-sm font-bold mb-2 text-left"
+          class="block text-left text-sm font-bold text-gray-700 mb-2"
           >Experience</label
         >
         <div class="relative">
           <select
             id="experience"
             v-model="vacancyDataInitial.experience"
-            class="block w-full bg-white border border-gray-300 hover:border-gray-400 h-[61px] py-2 px-3 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+            class="w-full border border-gray-300 rounded py-2 px-3 bg-white  focus:outline-none focus:-outline"
             required
           >
             <option value="" disabled selected>Select experience level</option>
@@ -70,14 +70,14 @@
       <div class="w-1/2">
         <label
           for="country"
-          class="block text-gray-700 text-sm font-bold mb-2 text-left"
+          class="block text-left text-sm font-bold text-gray-700 mb-2"
           >Country</label
         >
         <input
           type="text"
           id="country"
           v-model="vacancyDataInitial.country"
-          class="shadow appearance-none border rounded w-full h-[61px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          class="w-full border rounded py-2 px-3 text-gray-700  focus:outline-none focus:-outline"
           placeholder="Country"
         />
       </div>
@@ -86,14 +86,14 @@
     <div class="mb-6">
       <label
         for="description"
-        class="block text-gray-700 text-sm font-bold mb-2 text-left"
+        class="block text-sm font-bold text-gray-700 mb-2 text-left"
         >Description</label
       >
       <textarea
         id="description"
         v-model="vacancyDataInitial.description"
         rows="4"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="w-full border rounded py-2 px-3 text-gray-700  focus:outline-none focus:-outline"
         placeholder="Vacancy Description"
       ></textarea>
     </div>

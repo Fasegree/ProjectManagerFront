@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex justify-between mt-5 bg-white rounded-3xl border-1 pt-4 pl-8 pr-8 pb-4 text-left hover:shadow-xl hover:-translate-x-1 hover:-translate-y-1 transition-all duration-300 ease-in-out"
+    class="ml-5 flex justify-between mt-5 bg-white rounded-3xl border-1 pt-4 pl-8 pr-8 pb-4 text-left hover:shadow-xl hover:-translate-x-1 hover:-translate-y-1 transition-all duration-300 ease-in-out"
   >
     <RouterLink
       class="w-full cursor-pointer"

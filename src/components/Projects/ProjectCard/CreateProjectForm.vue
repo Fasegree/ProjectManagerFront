@@ -11,7 +11,7 @@
           type="text"
           id="name"
           v-model="projectDataInitial.name"
-          class="w-full border rounded py-2 px-3 text-gray-700 shadow focus:outline-none focus:shadow-outline"
+          class="w-full border rounded py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline"
           placeholder="Project Name"
           required
         />
@@ -26,7 +26,7 @@
         <select
           id="field"
           v-model="projectDataInitial.field"
-          class="w-full border border-gray-300 rounded py-2 px-3 bg-white shadow focus:outline-none focus:shadow-outline"
+          class="w-full border border-gray-300 rounded py-2 px-3 bg-white focus:outline-none focus:shadow-outline"
         >
           <option value="" disabled selected>Select a field</option>
           <option value="design">Design</option>
@@ -47,7 +47,7 @@
           type="text"
           id="experience"
           v-model="projectDataInitial.experience"
-          class="w-full border rounded py-2 px-3 text-gray-700 shadow focus:outline-none focus:shadow-outline"
+          class="w-full border rounded py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline"
           placeholder="Required Experience"
         />
       </div>
@@ -62,7 +62,7 @@
           type="date"
           id="deadline"
           v-model="projectDataInitial.deadline"
-          class="w-full border rounded py-2 px-3 text-gray-700 shadow focus:outline-none focus:shadow-outline"
+          class="w-full border rounded py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline"
         />
       </div>
     </div>
@@ -77,7 +77,7 @@
         id="description"
         v-model="projectDataInitial.description"
         rows="4"
-        class="w-full border rounded py-2 px-3 text-gray-700 shadow focus:outline-none focus:shadow-outline"
+        class="w-full border rounded py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline"
         placeholder="Project Description"
       ></textarea>
     </div>

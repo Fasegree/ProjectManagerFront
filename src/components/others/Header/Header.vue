@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex justify-between gap-3 h-32 items-center bg-[#F3F4F6] rounded-3xl px-10"
+    class="flex justify-between gap-3 h-32 items-center bg-[#F3F4F6] rounded-3xl px-10 mt-2"
   >
     <div class="flex gap-3">
       <div class="cursor-pointer">

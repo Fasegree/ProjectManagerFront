@@ -2,7 +2,7 @@
   <DropdownMenu
     ><DropdownMenuTrigger>
       <span
-        class="text-gray-500 cursor-pointer hover:bg-gray-200 rounded-[5px]"
+        class="text-gray-500 cursor-pointer hover:text-gray-900 rounded-[5px]"
         >{{ currentUser?.displayName }}</span
       >
     </DropdownMenuTrigger>

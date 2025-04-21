@@ -2,7 +2,7 @@
   <form
     v-if="props.vacancy.id"
     @submit.prevent="updateVacancyData"
-    class="bg-white px-16 py-14 rounded-2xl text-xl mt-8"
+    class="bg-white px-16 py-14 rounded-2xl mt-8"
   >
     <div class="flex gap-5">
       <div class="w-1/3">
@@ -14,7 +14,7 @@
         <select
           id="field"
           v-model="vacancy.field"
-          class="block w-full bg-white border border-gray-300 hover:border-gray-400 h-[61px] py-2 px-3 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+          class="w-full border border-gray-300 rounded py-2 px-3 bg-white focus:outline-none focus:shadow-outline"
         >
           <option value="" disabled>Select a field</option>
           <option value="development">Development</option>
@@ -31,7 +31,7 @@
         <select
           id="experience"
           v-model="vacancy.experience"
-          class="block w-full bg-white border border-gray-300 hover:border-gray-400 h-[61px] py-2 px-3 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+          class="w-full border border-gray-300 rounded py-2 px-3 bg-white focus:outline-none focus:shadow-outline"
         >
           <option value="" disabled>Select experience level</option>
           <option value="entry">Entry Level</option>
@@ -52,7 +52,7 @@
           type="date"
           id="deadline"
           v-model="props.projectDeadline"
-          class="shadow appearance-none border rounded w-full h-[61px] py-2 px-3 text-gray-700 leading-3 focus:outline-none focus:shadow-outline"
+          class="w-full border rounded py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline"
           required
         />
       </div>
@@ -67,7 +67,7 @@
         type="text"
         id="country"
         v-model="vacancy.country"
-        class="shadow appearance-none border rounded w-full h-[61px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="w-full border rounded py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline"
         placeholder="Country"
       />
     </div>
@@ -82,7 +82,7 @@
         id="description"
         v-model="vacancy.description"
         rows="4"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        class="w-full border rounded py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline"
         placeholder="Vacancy Description"
       ></textarea>
     </div>
