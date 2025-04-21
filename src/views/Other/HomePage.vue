@@ -1,13 +1,13 @@
 <template>
   <div v-if="!currentUser">
-    <p class="text-gray-500">Загрузка...</p>
+    <p class="text-gray-500">Loading...</p>
   </div>
 
   <div v-else="currentUser">
-    <h1 class="text-2xl font-semibold">Добро пожаловать, {{ name }}!</h1>
-    <p class="text-gray-600">Готов к новым проектам? 🛠️</p>
+    <h1 class="text-2xl font-semibold">Welcome, {{ name }}!</h1>
+    <p class="text-gray-600">Ready for new projects? 🛠️</p>
     <RouterLink to="/projects">
-      <Button class="mt-5">Перейти к проектам</Button>
+      <Button class="mt-5">Go to projects</Button>
     </RouterLink>
   </div>
 </template>

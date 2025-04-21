@@ -96,10 +96,10 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import { fetchUpdateVacancy } from "../../api/api";
-import type { IVacancy } from "../../types/vacancy";
-import Button from "../ui/button/Button.vue";
-import { toast } from "../ui/toast";
+import type { IVacancy } from "@/types/vacancy";
+import { fetchUpdateVacancy } from "@/api/api";
+import { toast } from "@/components/ui/toast";
+import Button from "@/components/ui/button/Button.vue";
 
 const props = defineProps<{ vacancy: IVacancy; projectDeadline?: string }>();
 

@@ -3,10 +3,10 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from "vue-router";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { useRouter } from "vue-router";
 import Button from "@/components/ui/button/Button.vue";
 
 const loginWithGoogle = async () => {

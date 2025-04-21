@@ -33,13 +33,10 @@
 </template>
 
 <script setup lang="ts">
-import { loginWithGoogle, useAuth } from "../../../composables/useAuth";
 import { BellIcon, ChatBubbleLeftIcon } from "@heroicons/vue/16/solid";
+import { loginWithGoogle, useAuth } from "../../../composables/useAuth";
 import Button from "@/components/ui/button/Button.vue";
 import DropMenuProfile from "./DropMenuProfile.vue";
 
 const { currentUser } = useAuth();
-
-
-
 </script>

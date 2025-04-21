@@ -22,9 +22,9 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
+import { toast } from "vue-sonner";
 import { auth, onAuthStateChanged } from "./firebase";
 import Toaster from "./components/ui/toast/Toaster.vue";
-import { toast } from "vue-sonner";
 import Header from "./components/others/Header/Header.vue";
 import Menu from "./components/others/Menu/Menu.vue";
 

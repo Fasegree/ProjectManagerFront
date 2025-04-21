@@ -4,12 +4,12 @@ import ProjectsPage from "../views/Projects/ProjectsPage.vue";
 import EditProjectPage from "../views/Projects/EditProjectPage.vue";
 import HomePage from "@/views/Other/HomePage.vue";
 import CreateProjectPage from "@/views/Projects/CreateProjectPage.vue";
-import CreateVacancyPage from "@/views/Vacancies/CreateVacancyPage.vue";
 import VacanciesPage from "@/views/Vacancies/VacanciesPage.vue";
-import VacancyCardDetail from "@/components/Vacancy/VacancyCardDetail.vue";
 import EditVacancyPage from "@/views/Vacancies/EditVacancyPage.vue";
 import LoginPage from "@/views/Other/LoginPage.vue";
 import NotFFound404Page from "@/views/Other/NotFFound404Page.vue";
+import CreateVacancyPage from "@/views/Vacancies/CreateVacancyPage.vue";
+import VacancyCardDetail from "@/components/Projects/Vacancy/VacancyCardDetail.vue";
 
 const routes = [
   {

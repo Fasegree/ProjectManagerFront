@@ -105,12 +105,12 @@
 </template>
 
 <script setup lang="ts">
+import { fetchCreateVacancy } from "@/api/api";
+import Button from "@/components/ui/button/Button.vue";
+import { toast } from "@/components/ui/toast";
+import { useAutoSave } from "@/localstorage/useAutoSave";
 import { reactive, ref } from "vue";
-import { fetchCreateVacancy } from "../../api/api";
 import { useRoute } from "vue-router";
-import { useAutoSave } from "../../localstorage/useAutoSave";
-import Button from "../ui/button/Button.vue";
-import { toast } from "../ui/toast";
 
 const projectId = ref<string | null>(null);
 const route = useRoute();

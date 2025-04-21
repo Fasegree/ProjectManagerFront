@@ -29,9 +29,9 @@
 
 <script setup lang="ts">
 import { onMounted, ref, watch } from "vue";
-import { auth, onAuthStateChanged } from "../../../firebase";
 import type { User } from "firebase/auth";
 import { useRoute } from "vue-router";
+import { auth, onAuthStateChanged } from "../../../firebase";
 import Button from "@/components/ui/button/Button.vue";
 import { logout } from "@/composables/logout";
 
