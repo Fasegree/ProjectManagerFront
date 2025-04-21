@@ -127,17 +127,18 @@ const createProject = async () => {
   if (!navigator.onLine) {
     toast({ title: "Check your conection" });
   }
-  const { name, deadline, description, experience } = projectDataInitial;
+  const { name, field, deadline, description, experience } = projectDataInitial;
   const projectToSend: IProject = {
     id: Date.now(),
     name,
+    field,
     description: description || "",
     experience: experience || "",
     deadline: formatDateToDMY(deadline),
   };
   try {
     const project = await fetchCreateProject(projectToSend);
-
+    
     projectsStore.projects.push(project);
 
     toast({
