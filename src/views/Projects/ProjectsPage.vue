@@ -6,7 +6,7 @@
   />
   <CardList v-if="activeProjects" :projects="activeProjects" />
 
-  <TitleWithButton title="Passed project" />
+  <TitleWithButton v-if="passedProjects.length" title="Passed project" />
   <CardList :projects="passedProjects" />
   <div v-if="!activeProjects.length && !passedProjects.length">No projects</div>
 </template>
@@ -19,6 +19,8 @@ import { formatDMYToDate, getToday } from "@/utils/formatDate";
 import { type IProject } from "@/types/project";
 import TitleWithButton from "@/components/others/TitleWithButton.vue";
 import { useRouter } from "vue-router";
+import { toast } from "@/components/ui/toast";
+import { getProjects } from "@/api/api";
 const router = useRouter();
 const passedProjects = ref<IProject[]>([]);
 const activeProjects = ref<IProject[]>([]);
@@ -48,8 +50,27 @@ const splitProjects = () => {
 
 onMounted(async () => {
   if (projectsStore.projects.length === 0) {
-    await projectsStore.fetchProjects();
-  }
+        try {
+          await projectsStore.fetchProjects();
+          if (!projectsStore.projects.length) {
+            const fetchedProjects = await getProjects();
+            projectsStore.projects = fetchedProjects;
+            if (!fetchedProjects.length) {
+              toast({ title: "Нет проектов на сервере" });
+            }
+          }
+        } catch (error: any) {
+          if (error.message === "Failed to fetch") {
+            toast({ title: "Нет доступа к серверу или отсутствует интернет-соединение" });
+          } else if (error.message === "Проекты не найдены на сервере" || error.message.startsWith("Ошибка сервера:")) {
+            toast({ title: error.message }); // Показывать сообщение с сервера, если оно есть
+          } else if (error.message === "На сервере нет проектов") {
+            toast({ title: "Нет проектов на сервере" }); // Отображать ваш конкретный текст
+          } else {
+            toast({ title: `Произошла ошибка: ${error}` }); // Обработка других, непредвиденных ошибок
+          }
+        }
+      }
   splitProjects();
 });
 </script>

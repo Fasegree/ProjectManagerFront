@@ -6,7 +6,7 @@
       <div class="text-2xl leading-4">
         {{ project.name }}
       </div>
-      <p class="border-l-4 pl-4 border-gray-300 text-left mt-5">
+      <p class="border-l-4 pl-4 border-gray-300 text-left mt-5 line-clamp-5">
         {{ project.description }}
       </p>
       <p class="border-l-4 pl-4 border-gray-300 text-left mt-5">

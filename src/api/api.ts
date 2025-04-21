@@ -1,15 +1,33 @@
 import type { IProject } from "../types/project";
 import type { IVacancy } from "../types/vacancy";
 
-const BASE_URL = "http://localhost:8080";
-// const BASE_URL = "https://projectmanagerbackend-pxfz.onrender.com";
+// const BASE_URL = "http://localhost:8080";
+const BASE_URL = "https://projectmanagerbackend-pxfz.onrender.com";
 
 export const getProjects = async (): Promise<IProject[]> => {
-  const response = await fetch(`${BASE_URL}/projects`);
-  if (!response.ok) {
-    throw new Error("Failed to fetch projects");
+  try {
+    const response = await fetch(`${BASE_URL}/projects`);
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error("Проекты не найдены на сервере");
+      } else if (response.status >= 500) {
+        throw new Error(`Ошибка сервера: ${response.status}`);
+      } else {
+        throw new Error(`Ошибка при получении проектов: ${response.status}`);
+      }
+    }
+    const data = await response.json();
+    if (!data.length) {
+      throw new Error("На сервере нет проектов");
+    }
+    return data;
+  } catch (error: any) {
+    // Здесь можно проверить тип ошибки, чтобы отличить сетевые ошибки
+    if (error.message === "Failed to fetch") {
+      throw new Error("Нет доступа к серверу или отсутствует интернет-соединение");
+    }
+    throw error; // Пробросить остальные ошибки
   }
-  return await response.json();
 };
 
 export const getProjectById = async (id: number): Promise<IProject> => {
