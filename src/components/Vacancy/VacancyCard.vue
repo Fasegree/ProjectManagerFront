@@ -42,7 +42,6 @@ const handleDelete = async () => {
   if (confirmed) {
     await fetchDeleteVacancy(props.vacancy.id);
     emit('deleted', props.vacancy.id); 
-    //  !эмит события
   }
 };
 </script>

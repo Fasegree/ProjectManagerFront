@@ -106,7 +106,7 @@ import { useProjectsStore } from "../../stores/projects";
 import Button from "../ui/button/Button.vue";
 import { type IProject } from "@/types/project";
 import { formatDMYToDateInput } from "@/utils/formatDate";
-import { toast } from "vue-sonner";
+import { toast } from "../ui/toast";
 
 const route = useRoute();
 const router = useRouter();
@@ -156,7 +156,6 @@ const updateVacancyData = async () => {
   try {
     await fetchUpdateVacancy(vacancy.value);
     toast({title: "Vacancy updated successfully"})
-    router.push(`/projects/${projectId}`);
   } catch (error) {
     if(!navigator.onLine) {
         toast({title:"Check your connection"})

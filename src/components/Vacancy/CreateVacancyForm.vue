@@ -1,9 +1,8 @@
 <template>
-  <div class="flex">
-      <span class="text-left text-3xl pb-8">Create vacancy</span>      
-  </div>
-
-  <form @submit.prevent="createVacancy" class="bg-white px-16 py-14 rounded-2xl text-xl">
+  <form
+    @submit.prevent="createVacancy"
+    class="bg-white px-16 py-14 rounded-2xl text-xl"
+  >
     <div class="flex gap-5">
       <div class="w-1/2">
         <label
@@ -37,11 +36,7 @@
             <option value="design">Design</option>
             <option value="marketing">Marketing</option>
           </select>
-          <div
-            class="flex items-center px-2 text-gray-700"
-          >
-           
-          </div>
+          <div class="flex items-center px-2 text-gray-700"></div>
         </div>
       </div>
     </div>
@@ -66,11 +61,7 @@
             <option value="senior">Senior</option>
             <option value="expert">Expert</option>
           </select>
-          <div
-            class=" flex items-center px-2 text-gray-700"
-          >
-           
-          </div>
+          <div class="flex items-center px-2 text-gray-700"></div>
         </div>
       </div>
 
@@ -106,11 +97,7 @@
     </div>
 
     <div class="flex items-center justify-start">
-      <Button
-        type="submit"
-      >
-        Create vacancy
-      </Button>
+      <Button type="submit"> Create vacancy </Button>
     </div>
   </form>
 </template>
@@ -119,15 +106,14 @@
 import { reactive, ref } from "vue";
 import { fetchCreateVacancy } from "../../api/api";
 import { useRoute } from "vue-router";
-import { useAutoSave } from "../../composables/useAutoSave";
+import { useAutoSave } from "../../localstorage/useAutoSave";
 import Button from "../ui/button/Button.vue";
 import { toast } from "../ui/toast";
 
-const projectId = ref<string | null>(null)
-const route = useRoute()
-const param = route.params.projectId
-if(typeof param === 'string')
-projectId.value = param
+const projectId = ref<string | null>(null);
+const route = useRoute();
+const param = route.params.projectId;
+if (typeof param === "string") projectId.value = param;
 
 interface VacancyData {
   name: string;
@@ -144,29 +130,31 @@ const vacancyDataInitial = reactive<VacancyData>({
   country: "",
   description: "",
 });
-const DRAFT_VACANCY = "draftVacancy"
-useAutoSave(DRAFT_VACANCY, vacancyDataInitial)
+const DRAFT_VACANCY = "draftVacancy";
+useAutoSave(DRAFT_VACANCY, vacancyDataInitial);
 const createVacancy = async () => {
-  
-  
-  if(projectId.value){
+  if (projectId.value) {
     try {
-      await fetchCreateVacancy({...vacancyDataInitial, project_id: Number(projectId.value) , id: Date.now() })
-      toast({title:`Vacancy "${vacancyDataInitial.name}" successfully created`})
+      await fetchCreateVacancy({
+        ...vacancyDataInitial,
+        project_id: Number(projectId.value),
+        id: Date.now(),
+      });
+      toast({
+        title: `Vacancy "${vacancyDataInitial.name}" successfully created`,
+      });
       vacancyDataInitial.name = "";
       vacancyDataInitial.field = "";
       vacancyDataInitial.experience = "";
       vacancyDataInitial.country = "";
       vacancyDataInitial.description = "";
       localStorage.removeItem(DRAFT_VACANCY);
-      
     } catch (error) {
-      if(!navigator.onLine) {
-        toast({title:"Check your connection"})
+      if (!navigator.onLine) {
+        toast({ title: "Check your connection" });
       }
-      toast({title:"Server is not available. Please try again later"})
+      toast({ title: "Server is not available. Please try again later" });
     }
-
   }
 };
 </script>
