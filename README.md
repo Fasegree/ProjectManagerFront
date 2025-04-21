@@ -29,3 +29,6 @@ The server will start on http://localhost:5173.
 
 App
 https://project-manager-front-eta.vercel.app/login
+
+backend
+https://projectmanagerbackend-pxfz.onrender.com

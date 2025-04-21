@@ -1,7 +1,8 @@
 import type { IProject } from "../types/project";
 import type { IVacancy } from "../types/vacancy";
 
-const BASE_URL = "http://localhost:8080";
+// const BASE_URL = "http://localhost:8080";
+const BASE_URL = "https://projectmanagerbackend-pxfz.onrender.com";
 
 export const getProjects = async (): Promise<IProject[]> => {
   const response = await fetch(`${BASE_URL}/projects`);
@@ -69,7 +70,9 @@ export const fetchDeleteProject = async (id: number) => {
   }
 };
 
-export const getVacanciesByProject = async (projectId:number): Promise<IVacancy[]> => {
+export const getVacanciesByProject = async (
+  projectId: number
+): Promise<IVacancy[]> => {
   const response = await fetch(`${BASE_URL}/projects/${projectId}/vacancies`);
   if (!response.ok) {
     throw new Error("Failed to fetch vacancies");
@@ -77,24 +80,25 @@ export const getVacanciesByProject = async (projectId:number): Promise<IVacancy[
   return await response.json();
 };
 
-export const fetchCreateVacancy = async (vacancy:IVacancy) => {
+export const fetchCreateVacancy = async (vacancy: IVacancy) => {
   try {
-    const response = await fetch(`${BASE_URL}/projects/${vacancy.project_id}/vacancies`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(vacancy),
-    });
+    const response = await fetch(
+      `${BASE_URL}/projects/${vacancy.project_id}/vacancies`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(vacancy),
+      }
+    );
     if (!response.ok) {
       throw new Error(`Error: ${response.status}`);
     }
     const data = await response.json();
     return data;
-  } catch (error) {
-    
-  }
-}
+  } catch (error) {}
+};
 
 export const fetchUpdateVacancy = async (vacancy: IVacancy) => {
   try {
