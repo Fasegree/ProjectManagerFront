@@ -63,11 +63,11 @@ onMounted(async () => {
           if (error.message === "Failed to fetch") {
             toast({ title: "Нет доступа к серверу или отсутствует интернет-соединение" });
           } else if (error.message === "Проекты не найдены на сервере" || error.message.startsWith("Ошибка сервера:")) {
-            toast({ title: error.message }); // Показывать сообщение с сервера, если оно есть
+            toast({ title: error.message }); 
           } else if (error.message === "На сервере нет проектов") {
-            toast({ title: "Нет проектов на сервере" }); // Отображать ваш конкретный текст
+            toast({ title: "Нет проектов на сервере" }); 
           } else {
-            toast({ title: `Произошла ошибка: ${error}` }); // Обработка других, непредвиденных ошибок
+            toast({ title: `Произошла ошибка: ${error}` }); 
           }
         }
       }

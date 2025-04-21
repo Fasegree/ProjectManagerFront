@@ -22,11 +22,10 @@ export const getProjects = async (): Promise<IProject[]> => {
     }
     return data;
   } catch (error: any) {
-    // Здесь можно проверить тип ошибки, чтобы отличить сетевые ошибки
     if (error.message === "Failed to fetch") {
       throw new Error("Нет доступа к серверу или отсутствует интернет-соединение");
     }
-    throw error; // Пробросить остальные ошибки
+    throw error; 
   }
 };
 
