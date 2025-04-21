@@ -1,6 +1,6 @@
 import { ref, onMounted } from "vue";
-import { onAuthStateChanged, type User } from "firebase/auth";
-import { auth } from "../firebase";
+import { onAuthStateChanged, signInWithPopup, type User } from "firebase/auth";
+import { auth, provider } from "../firebase";
 
 const currentUser = ref<User | null>(null);
 const isAuthLoading = ref(true);
@@ -24,3 +24,7 @@ export function useAuth() {
     isAuthLoading,
   };
 }
+
+export const loginWithGoogle = async () => {
+  await signInWithPopup(auth, provider);
+};

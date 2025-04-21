@@ -23,31 +23,23 @@
           :src="currentUser?.photoURL || ''"
           alt="avatar"
         />
-        <span class="text-gray-500 cursor-default">{{
-          currentUser?.displayName
-        }}</span>
+        <DropMenuProfile :current-user="currentUser" />
       </div>
       <div v-else>
-        <Button
-          class="text-lg font-semibold rounded-3xl bg-gray-200 hover:bg-gray-300 m-0"
-          @click="loginWithGoogle"
-        >
-          Log in
-        </Button>
+        <Button @click="loginWithGoogle"> Log in </Button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { auth, provider, signInWithPopup } from "../../../firebase";
-import { useAuth } from "../../../composables/useAuth";
+import { loginWithGoogle, useAuth } from "../../../composables/useAuth";
 import { BellIcon, ChatBubbleLeftIcon } from "@heroicons/vue/16/solid";
 import Button from "@/components/ui/button/Button.vue";
+import DropMenuProfile from "./DropMenuProfile.vue";
 
 const { currentUser } = useAuth();
 
-const loginWithGoogle = async () => {
-  await signInWithPopup(auth, provider);
-};
+
+
 </script>
