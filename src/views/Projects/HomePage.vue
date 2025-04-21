@@ -6,9 +6,8 @@
   <div v-else="currentUser">
     <h1 class="text-2xl font-semibold">Добро пожаловать, {{ name }}!</h1>
     <p class="text-gray-600">Готов к новым проектам? 🛠️</p>
-    <RouterLink  to="/projects">
-     
-      <Button class=" mt-5">Перейти к проектам</Button>
+    <RouterLink to="/projects">
+      <Button class="mt-5">Перейти к проектам</Button>
     </RouterLink>
   </div>
 </template>

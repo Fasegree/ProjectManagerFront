@@ -10,7 +10,6 @@
       </div>
     </div>
 
-
     <div class="flex gap-3 items-center">
       <div>
         <BellIcon class="size-5 text-gray-300" />
@@ -34,7 +33,7 @@
           @click="loginWithGoogle"
         >
           Log in
-        </button>
+        </Button>
       </div>
     </div>
   </div>

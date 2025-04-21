@@ -1,18 +1,17 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import ProjectsPage from "../views/Projects/ProjectsPage.vue";
-import CreateProject from "../views/Projects/CreateProject.vue";
-import CreateVacancy from "../views/Projects/CreateVacancy.vue";
 import EditProjectPage from "../views/Projects/EditProjectPage.vue";
 import HomePage from "../views/Projects/HomePage.vue";
 import LoginPage from "../views/Projects/LoginPage.vue";
-import Vacancies from "../views/Projects/Vacancies.vue";
 import VacancyCardDetail from "../components/Vacancy/VacancyCardDetail.vue";
 import EditVacancyForm from "../components/Vacancy/EditVacancyForm.vue";
 import NotFFound404Page from "@/views/Projects/NotFFound404Page.vue";
+import CreateVacancyPage from "@/views/Projects/CreateVacancyPage.vue";
+import VacanciesPage from "@/views/Projects/VacanciesPage.vue";
+import CreateProjectPage from "@/views/Projects/CreateProjectPage.vue";
 
 const routes = [
-
   {
     path: "/",
     name: "Home",
@@ -34,19 +33,19 @@ const routes = [
   {
     path: "/create-project",
     name: "CreateProjects",
-    component: CreateProject,
+    component: CreateProjectPage,
     meta: { requiresAuth: true },
   },
   {
     path: "/projects/:projectId/create-vacancy",
     name: "CreateVacancy",
-    component: CreateVacancy,
+    component: CreateVacancyPage,
     meta: { requiresAuth: true },
   },
   {
     path: "/vacancies",
     name: "Vacancies",
-    component: Vacancies,
+    component: VacanciesPage,
     meta: { requiresAuth: true },
   },
   {
@@ -85,8 +84,6 @@ const routes = [
     component: NotFFound404Page,
     meta: { requiresAuth: true },
   },
-
-
 ];
 
 const router = createRouter({
@@ -119,6 +116,5 @@ router.beforeEach(async (to, _, next) => {
     next();
   }
 });
-
 
 export default router;
