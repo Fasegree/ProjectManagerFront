@@ -1,10 +1,18 @@
-# Vue 3 + TypeScript + Vite + TailWind
+# Used stack:
 
-# Trood Front
+Vue 3 + TypeScript + Vite + TailWind + UI: shadcn/Vue
 
-This repository contains a simple project management.
+# About project:
 
-## Setup Instructions
+This repository contains a test task Web App for simple project management. Developed for company "Trood Comunity".
+
+# Features:
+
+1. LS saved input data in all fields of the forms;
+2. CRUD Projects & Vacancies;
+3. Authorisation with Gmail;
+
+## Setup Instructions:
 
 1. Clone the Repository:
 
