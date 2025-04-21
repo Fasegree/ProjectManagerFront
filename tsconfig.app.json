@@ -8,11 +8,9 @@
 
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     },
-    
+
     /* Линтинг */
     "strict": true,
     "noUnusedLocals": true,

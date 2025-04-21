@@ -1,22 +1,14 @@
 <template>
-  <div v-if="!activeProjects.length && !passedProjects.length">No projects</div>
-
-  <div class="w-full">
-    <div class="flex justify-between items-center">
-      <span class="text-3xl">Active project</span>
-      <RouterLink to="/create-project">
-        <Button class=""> Create project </Button>
-      </RouterLink>
-    </div>
-  </div>
+  <TitleWithButton
+    title="Active project"
+    title-btn="Create project"
+    :action-click="() => router.push('/create-project')"
+  />
   <CardList v-if="activeProjects" :projects="activeProjects" />
 
-  <div v-if="passedProjects.length" class="w-full">
-    <div class="flex justify-between items-center pl-8">
-      <span class="text-3xl pt-10">Passed project</span>
-    </div>
-  </div>
+  <TitleWithButton title="Passed project" />
   <CardList :projects="passedProjects" />
+  <div v-if="!activeProjects.length && !passedProjects.length">No projects</div>
 </template>
 
 <script setup lang="ts">
@@ -25,8 +17,9 @@ import CardList from "../../components/Projects/ProjectCard/CardList.vue";
 import { onMounted, ref } from "vue";
 import { formatDMYToDate, getToday } from "@/utils/formatDate";
 import { type IProject } from "@/types/project";
-import Button from "@/components/ui/button/Button.vue";
-
+import TitleWithButton from "@/components/others/TitleWithButton.vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
 const passedProjects = ref<IProject[]>([]);
 const activeProjects = ref<IProject[]>([]);
 const projectsStore = useProjectsStore();

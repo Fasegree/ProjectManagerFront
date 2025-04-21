@@ -57,12 +57,11 @@
     <div class="flex gap-5 justify-start">
       <Button type="submit"> Save Changes </Button>
       <RouterLink :to="`/projects/${project.id}/create-vacancy`">
-        <Button type="submit"> Create vacancy </Button>
+        <Button type="submit"> Add vacancy </Button>
       </RouterLink>
     </div>
-    <Toaster/>
+    <Toaster />
   </form>
-
 </template>
 
 <script setup lang="ts">
@@ -74,11 +73,10 @@ import { useProjectsStore } from "@/stores/projects";
 import type { IProject } from "@/types/project";
 import { formatDateToDMY } from "@/utils/formatDate";
 
-const projectsStore = useProjectsStore
+const projectsStore = useProjectsStore;
 const props = defineProps<{ project: IProject }>();
-console.log(props.project);
 
-const projectDeadline = props.project.deadline
+const projectDeadline = props.project.deadline;
 
 const updProject = async () => {
   if (props.project) {
@@ -87,12 +85,12 @@ const updProject = async () => {
       ...props.project,
       deadline: formatDateToDMY(deadline),
     };
-    
+
     try {
       await fetchUpdateProject(updateToSendProject);
-      const equilDate = new Date(deadline).getTime() === new Date(projectDeadline).getTime()
-      if(!equilDate )
-      projectsStore().fetchProjects()
+      const equilDate =
+        new Date(deadline).getTime() === new Date(projectDeadline).getTime();
+      if (!equilDate) projectsStore().fetchProjects();
       toast({ title: "Project successfully updated" });
     } catch (error) {
       toast({ title: `Server is not available. Please try again later` });
