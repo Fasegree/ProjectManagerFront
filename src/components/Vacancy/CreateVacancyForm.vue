@@ -30,6 +30,7 @@
             id="field"
             v-model="vacancyDataInitial.field"
             class="block w-full bg-white border border-gray-300 hover:border-gray-400 h-[61px] py-2 px-3 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+            required
           >
             <option value="" disabled selected>Select a field</option>
             <option value="development">Development</option>
@@ -53,6 +54,7 @@
             id="experience"
             v-model="vacancyDataInitial.experience"
             class="block w-full bg-white border border-gray-300 hover:border-gray-400 h-[61px] py-2 px-3 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+            required
           >
             <option value="" disabled selected>Select experience level</option>
             <option value="entry">Entry Level</option>
