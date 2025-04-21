@@ -7,6 +7,7 @@
         >
         <select
           id="field"
+          v-model="project.field"
           class="w-full py-2 rounded-md px-2 bg-white border border-gray-300 hover:border-gray-400 focus:outline-none focus:shadow-outline"
         >
           <option disabled value="">Select a field</option>
@@ -73,6 +74,8 @@ import type { IProject } from "@/types/project";
 import { formatDateToDMY } from "@/utils/formatDate";
 
 const props = defineProps<{ project: IProject }>();
+console.log(props.project);
+
 
 const updProject = async () => {
   if (props.project) {
@@ -84,7 +87,6 @@ const updProject = async () => {
     
     try {
       await fetchUpdateProject(updateToSendProject);
-      console.log('123');
       toast({ title: "Project successfully updated" });
     } catch (error) {
       toast({ title: `Server is not available. Please try again later` });

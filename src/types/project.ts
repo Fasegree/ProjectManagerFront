@@ -6,6 +6,7 @@ export interface IProjectWithVacancy extends IProject {
 export interface IProject {
     id: number;
     name: string;
+    field: string;
     description: string | null;
     deadline: string; 
     experience: string;
