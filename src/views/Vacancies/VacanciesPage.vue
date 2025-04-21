@@ -9,7 +9,6 @@
         Name project: "<b class="font-aeroport-black"> {{ project.name }}</b
         >"
       </h2>
-      <!-- <TitleWithButton :title="`Name project: ${project.name}`"/> -->
       <TransitionGroup name="fade" tag="div">
         <VacancyCard
           v-for="vacancy in project.vacancies"
@@ -28,7 +27,6 @@ import { ref, onMounted } from "vue";
 import type { IProject, IProjectWithVacancy } from "../../types/project";
 import { getProjects, getVacanciesByProject } from "../../api/api";
 import VacancyCard from "../../components/Vacancy/VacancyCard.vue";
-import TitleWithButton from "@/components/others/TitleWithButton.vue";
 
 // const projectsWithVacancies = ref<(IProject & { vacancies: IVacancy[] })[]>([]);
 const projectsWithVacancies = ref<IProjectWithVacancy[]>([]);
