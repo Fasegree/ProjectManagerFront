@@ -10,7 +10,7 @@ This repository contains a test task Web App for simple project management. Deve
 
 1. LS saved input data in all fields of the forms;
 2. CRUD Projects & Vacancies;
-3. Authorisation with Gmail;
+3. Authorisation with Gmail(firebase RTDB);
 
 ## Setup Instructions:
 
