@@ -23,7 +23,7 @@
 
           <div
             v-else-if="currentUser"
-            class="bg-gray-100 px-4 py-6 md:px-16 md:py-14 rounded-xl md:rounded-3xl mt-4 md:mt-5"
+            class="bg-gray-100 px-4 py-6 md:p-10 xl:px-16 xl:py-14 rounded-xl md:rounded-3xl mt-4 md:mt-5"
           >
             <RouterView />
           </div>

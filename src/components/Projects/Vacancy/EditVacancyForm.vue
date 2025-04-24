@@ -2,10 +2,10 @@
   <form
     v-if="props.vacancy.id"
     @submit.prevent="updateVacancyData"
-    class="bg-white px-16 py-14 rounded-2xl mt-8"
+    class="bg-white p-3 md:px-5 xl:px-16 md:py-14 rounded-2xl mt-8"
   >
-    <div class="flex gap-5">
-      <div class="w-1/3">
+    <div class="grid grid-cols-2 w-full gap-3 md:grid-cols-3 md:gap-5">
+      <div >
         <label
           for="field"
           class="block text-gray-700 text-sm font-bold mb-2 text-left"
@@ -22,7 +22,7 @@
           <option value="marketing">Marketing</option>
         </select>
       </div>
-      <div class="w-1/3">
+      <div >
         <label
           for="experience"
           class="block text-gray-700 text-sm font-bold mb-2 text-left"
@@ -41,8 +41,7 @@
           <option value="expert">Expert</option>
         </select>
       </div>
-
-      <div class="w-1/3">
+      <div >
         <label
           for="deadline"
           class="block text-gray-700 text-sm font-bold mb-2 text-left"
@@ -57,6 +56,7 @@
         />
       </div>
     </div>
+
     <div class="w-1/2 mt-5">
       <label
         for="country"
