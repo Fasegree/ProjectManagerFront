@@ -1,5 +1,5 @@
 <template>
-  <aside v-if="user" class=" flex-col justify-between min-h-[80vh] md:flex ">
+  <aside v-if="user" class="flex-col justify-between min-h-[80vh] md:flex">
     <div class="flex gap-1 flex-col items-start w-full mt-5">
       <RouterLink
         v-for="(item, index) in menuItems"

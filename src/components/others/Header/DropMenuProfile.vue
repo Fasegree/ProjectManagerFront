@@ -1,9 +1,9 @@
 <template>
   <DropdownMenu
     ><DropdownMenuTrigger>
-     <slot></slot>
+      <slot></slot>
     </DropdownMenuTrigger>
-    <DropdownMenuContent class="bg-white opacity-95 rounded-[7px] ">
+    <DropdownMenuContent class="bg-white opacity-95 rounded-[7px]">
       <DropdownMenuLabel class="cursor-default text-gray-400"
         >My Account</DropdownMenuLabel
       >
@@ -29,7 +29,6 @@
 </template>
 
 <script setup lang="ts">
-
 import { logout } from "@/composables/logout";
 
 import type { User } from "firebase/auth";

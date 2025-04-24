@@ -1,9 +1,8 @@
 import type { IProject } from "../types/project";
 import type { IVacancy } from "../types/vacancy";
 
-
 //const BASE_URL = "http://localhost:8080";
- const BASE_URL = "https://projectmanagerbackend-pxfz.onrender.com";
+const BASE_URL = "https://projectmanagerbackend-pxfz.onrender.com";
 
 export const getProjects = async (): Promise<IProject[]> => {
   try {
@@ -24,9 +23,11 @@ export const getProjects = async (): Promise<IProject[]> => {
     return data;
   } catch (error: any) {
     if (error.message === "Failed to fetch") {
-      throw new Error("Нет доступа к серверу или отсутствует интернет-соединение");
+      throw new Error(
+        "Нет доступа к серверу или отсутствует интернет-соединение"
+      );
     }
-    throw error; 
+    throw error;
   }
 };
 
