@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="updProject">
-    <div class="grid grid-cols-[1fr_1fr_1fr] gap-7 mb-4">
+    <div class="grid grid-cols-[1fr_1fr_1fr] gap-3 md:gap-7 mb-4">
       <div class="w-full">
         <label for="field" class="block text-sm font-bold mb-2 text-left"
           >Field</label

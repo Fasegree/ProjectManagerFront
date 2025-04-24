@@ -1,12 +1,9 @@
 <template>
   <DropdownMenu
     ><DropdownMenuTrigger>
-      <span
-        class="text-gray-500 cursor-pointer hover:text-gray-900 rounded-[5px] text-sm md:text-base"
-        >{{ currentUser?.displayName }}</span
-      >
+     <slot></slot>
     </DropdownMenuTrigger>
-    <DropdownMenuContent class="bg-white opacity-80 rounded-[7px] ">
+    <DropdownMenuContent class="bg-white opacity-95 rounded-[7px] ">
       <DropdownMenuLabel class="cursor-default text-gray-400"
         >My Account</DropdownMenuLabel
       >

@@ -1,9 +1,9 @@
 <template>
   <form
     @submit.prevent="createVacancy"
-    class="bg-white px-16 py-14 rounded-2xl "
+    class="bg-white p-3 xl:px-16 xl:py-14 rounded-2xl "
   >
-    <div class="flex gap-7">
+    <div class="flex gap-3 md:gap-7">
       <div class="w-1/2">
         <label
           for="name"
@@ -42,7 +42,7 @@
       </div>
     </div>
 
-    <div class="mb-4 mt-5 flex gap-5">
+    <div class="mb-4 mt-5 flex gap-3 md:gap-7">
       <div class="w-1/2">
         <label
           for="experience"

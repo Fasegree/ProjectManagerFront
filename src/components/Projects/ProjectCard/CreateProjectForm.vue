@@ -1,6 +1,6 @@
 <template>
-  <form @submit.prevent="createProject" class="space-y-6">
-    <div class="flex gap-7">
+  <form @submit.prevent="createProject" class="space-y-3 md:space-y-6">
+    <div class="flex gap-3 md:gap-7">
       <div class="w-1/2">
         <label
           for="name"
@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    <div class="flex gap-7">
+    <div class="flex gap-3 md:gap-7">
       <div class="w-1/2">
         <label
           for="experience"

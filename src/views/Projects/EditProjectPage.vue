@@ -5,7 +5,7 @@
       title-btn="Delete project"
       :action-click="handleDeleteProject"
     />
-    <div class="bg-white p-8 rounded-3xl shadow-md w-full">
+    <div class="bg-white p-3 md:p-8 rounded-3xl shadow-md w-full">
       <EditProjectForm :project="project" />
     </div>
     <HiredPeopleList />

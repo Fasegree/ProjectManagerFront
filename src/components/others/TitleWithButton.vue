@@ -1,6 +1,6 @@
 <template>
-  <div class="flex justify-between items-center mb-8">
-    <h2 class="text-[32px] font-semibold">{{ title }}</h2>
+  <div class="flex justify-between items-center mb-3 md:mb-8">
+    <h2 class="text-2xl md:text-[32px] font-semibold">{{ title }}</h2>
     <Button v-if="titleBtn" @click="actionClick?.()"> {{ titleBtn }} </Button>
   </div>
 </template>
