@@ -1,5 +1,5 @@
 <template>
-  <div v-if="projects.length" class="grid grid-cols-2 gap-6 mt-7 mb-4">
+  <div v-if="projects.length" class="grid grid-cols-1 gap-6 mt-7 mb-4 xl:grid-cols-2">
     <div v-for="project in projects" :key="project.id">
       <RouterLink
         :to="`/projects/${project.id}`"

@@ -2,11 +2,11 @@
   <DropdownMenu
     ><DropdownMenuTrigger>
       <span
-        class="text-gray-500 cursor-pointer hover:text-gray-900 rounded-[5px]"
+        class="text-gray-500 cursor-pointer hover:text-gray-900 rounded-[5px] text-sm md:text-base"
         >{{ currentUser?.displayName }}</span
       >
     </DropdownMenuTrigger>
-    <DropdownMenuContent class="bg-white opacity-80 rounded-[7px]">
+    <DropdownMenuContent class="bg-white opacity-80 rounded-[7px] ">
       <DropdownMenuLabel class="cursor-default text-gray-400"
         >My Account</DropdownMenuLabel
       >
